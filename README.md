@@ -1,2 +1,2 @@
-# Wordist
+# Word list
 Word listing application
