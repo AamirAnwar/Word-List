@@ -14,7 +14,7 @@ class WDSearchViewController: UIViewController {
     let searchTextField = UITextField()
     let textFieldSeparator = WDSeparator.init(type: .WDSeparatorTypeMiddle, frame: .zero)
     let searchTableView = UITableView.init(frame: .zero, style: .plain)
-    
+    let wordSearchObject = WordSearch()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -110,11 +110,33 @@ class WDSearchViewController: UIViewController {
             transitionToDefaultState()
     }
     
+    func clearResults() {
+        wordSearchObject.clearSearch()
+        searchTableView.reloadData()
+    }
+    
 }
 
 extension WDSearchViewController:UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        return true
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let existingText = textField.text! as NSString
+        let updatedText = existingText.replacingCharacters(in: range, with: string)
+        if updatedText.count > 1 {
+            wordSearchObject.performSearch(withQuery: updatedText, delegate: self)
+        }
+        else {
+            clearResults()
+        }
+        return true
+    }
+    
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        clearResults()
         return true
     }
 }
@@ -124,17 +146,30 @@ extension WDSearchViewController:UITableViewDataSource,UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: kSearchResultReuseIdentifer)!
         
         if let cell = cell as? WDSearchResultTableViewCell {
-            cell.setTitle("Saxophone")
+            
+            cell.setTitle(wordSearchObject.searchResultsFor(query: searchTextField.text!)[indexPath.row])
         }
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return wordSearchObject.searchResultsFor(query: searchTextField.text!).count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
     }
+}
+
+extension WDSearchViewController:WordSearchDelegate {
+    func didPerformSearchSuccessfully(forQuery query: String) {
+        searchTableView.reloadData()
+    }
+    
+    func didFailToSearch(query: String) {
+        
+    }
+    
+    
 }
 
