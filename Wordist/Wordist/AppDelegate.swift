@@ -16,7 +16,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = getRootViewController()
+        window?.backgroundColor = UIColor.white
+        window?.makeKeyAndVisible()
         return true
+    }
+    
+    func getRootViewController() -> UIViewController {
+        let tabBarController = UITabBarController()
+        tabBarController.viewControllers = getMainViewControllers()
+        tabBarController.tabBar.tintColor = WDMainTheme
+        return tabBarController
+    }
+    
+    func getMainViewControllers() -> [UIViewController] {
+        // Search view controller
+        let searchViewController = WDSearchViewController()
+        
+        let searchNav = UINavigationController(rootViewController: searchViewController)
+        searchNav.navigationBar.isHidden = true
+        searchNav.tabBarItem.title = "Search"
+        // List view controller TODO
+        
+        // Settings view controller TODO
+        
+        return [searchNav]
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
