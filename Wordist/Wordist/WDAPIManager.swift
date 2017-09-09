@@ -10,16 +10,33 @@ import Foundation
 import Alamofire
 
 protocol WDAPIManagerDelegate {
-    func didRecieve(response:[String:Any], params:[String:String]?)
-    func didFail()
+    func didRecieve(response:[String:Any], params:[String:Any]?)
+    func didFail(withParams params:[String:Any]?)
 }
 
 class WDAPIManager {
     static let sharedInstance = WDAPIManager()
-    func getRequestWith(url:URLConvertible, params:[String:String]?, delegate:WDAPIManagerDelegate) {
-        Alamofire.request(url, method: .get, parameters: params, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
+    func getRequestWith(url:URLConvertible, params:[String:Any]?, delegate:WDAPIManagerDelegate) -> DataRequest {
+        print(url)
+        print(params ?? "")
+        return Alamofire.request(url, method: .get, parameters: params, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
+            
+            var updatedParams:[String:Any]? = [:]
+            if let url = response.request?.url?.absoluteString {
+                if var params = params {
+                    params["request_url"] = url
+                    updatedParams = params
+                }
+                else {
+                    updatedParams = ["request_url":url]
+                }
+            }
+            
             guard response.result.isSuccess else {
-                delegate.didFail()
+                delegate.didFail(withParams:params)
+                if let request = response.request {
+                    print("Request Failed \(request)")
+                }
                 return
             }
             // Handle array of dictionaries
@@ -27,8 +44,8 @@ class WDAPIManager {
             if let responseArray = response.result.value as? Array<Any> {
                 responseObject["response"] = responseArray
             }
-            
-            delegate.didRecieve(response: responseObject, params:params)
+
+            delegate.didRecieve(response: responseObject, params:updatedParams)
         }
     }
 }

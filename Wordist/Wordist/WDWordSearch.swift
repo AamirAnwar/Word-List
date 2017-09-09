@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import Alamofire
 
 protocol WordSearchDelegate {
     func didPerformSearchSuccessfully(forQuery query:String)
@@ -18,37 +18,42 @@ class WordSearch {
     static let apiEndpoint = "https://api.datamuse.com/words"
     fileprivate var delegate:WordSearchDelegate?
     fileprivate var currentQuery:String?
-    fileprivate var searchResults = [String]()
+    var searchResults = [String]()
+    fileprivate var currentRequestID:Int?
     
     func performSearch(withQuery query:String, delegate:WordSearchDelegate) {
         if let url = getSearchURLWith(Query: query) {
             currentQuery = query
             self.delegate = delegate
-            WDAPIManager.sharedInstance.getRequestWith(url: url, params: getParams(withQuery: query), delegate:self)
+            
+            let dataRequestObject =  WDAPIManager.sharedInstance.getRequestWith(url: url, params: nil, delegate:self)
+            currentRequestID = dataRequestObject.request?.hashValue
+            
         }
     }
     
-    fileprivate func getSearchURLWith(Query query:String) -> String? {
-        guard query.isEmpty == false else {
+    fileprivate func getSearchURLWith(Query query:String?) -> String? {
+        guard let query = query, query.isEmpty == false else {
             return nil
         }
-//        return WordSearch.apiEndpoint
-        return "\(WordSearch.apiEndpoint)?sp=\(query)*&md=d"
+        let queryString = query.replacingOccurrences(of: " ", with: "")
+        return "\(WordSearch.apiEndpoint)?sp=\(queryString)*&md=d&max=50"
     }
     
-    fileprivate func getParams(withQuery query:String) -> [String:String] {
-        guard query.isEmpty == false else {
-            return [:]
-        }
-        return ["sp":"\(query)*","md":"d","query":query]
-    }
+//    fileprivate func getParams(withQuery query:String) -> [String:String] {
+//        guard query.isEmpty == false else {
+//            return [:]
+//        }
+//        let queryString = query.replacingOccurrences(of: " ", with: "")
+//        return ["sp":"\(queryString)*","md":"d","query":query]
+//    }
     
-    func searchResultsFor(query:String) -> [String] {
-        guard currentQuery == query else {
-            return []
-        }
-        return searchResults
-    }
+//    func searchResultsFor(query:String) -> [String] {
+//        guard currentQuery == query else {
+//            return []
+//        }
+//        return searchResults
+//    }
     
     func clearSearch() {
         currentQuery = nil
@@ -57,9 +62,10 @@ class WordSearch {
 }
 
 extension WordSearch:WDAPIManagerDelegate {
-    func didRecieve(response: [String : Any], params: [String : String]?) {
+    func didRecieve(response: [String : Any], params: [String : Any]?) {
+        let currentQueryURLPath = getSearchURLWith(Query: currentQuery)
         
-        if let query = params?["query"], query == currentQuery {
+        if let requestURL = params?["request_url"] as? String, requestURL == currentQueryURLPath  {
             searchResults.removeAll()
             if let wordsResponseList = response["response"] as? Array<Any> {
                 
@@ -69,11 +75,11 @@ extension WordSearch:WDAPIManagerDelegate {
                     }
                 }
             }
-            delegate?.didPerformSearchSuccessfully(forQuery: query)
+            delegate?.didPerformSearchSuccessfully(forQuery: currentQuery ?? "")
         }
     }
     
-    func didFail() {
-        
+    func didFail(withParams params: [String : Any]?) {
+        delegate?.didFailToSearch(query:currentQuery ?? "")
     }
 }

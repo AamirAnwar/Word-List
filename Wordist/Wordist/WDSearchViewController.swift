@@ -10,20 +10,22 @@ import UIKit
 
 let kTextFieldHeight:CGFloat = 55
 let kSearchResultReuseIdentifer = "kSearchResultCell"
+let kDottedLoaderWidth:CGFloat = 52
+let kDottedLoaderHeight:CGFloat = 16
+
 class WDSearchViewController: UIViewController {
     let searchTextField = UITextField()
     let textFieldSeparator = WDSeparator.init(type: .WDSeparatorTypeMiddle, frame: .zero)
     let searchTableView = UITableView.init(frame: .zero, style: .plain)
     let wordSearchObject = WordSearch()
+    let dottedLoader = WDDottedLoader(frame: CGRect(x: 0, y: 0, width: kDottedLoaderWidth, height: kDottedLoaderHeight))
     
     override func viewDidLoad() {
         super.viewDidLoad()
         registerForNotifications()
         createSearchTextField()
         createTableView()
-        
-//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.didTapSearchBackground))
-//        view.addGestureRecognizer(tapGesture)
+        createDottedLoader()
     }
     
     func registerForNotifications() {
@@ -63,13 +65,21 @@ class WDSearchViewController: UIViewController {
     }
     
     
+    fileprivate func createDottedLoader() {
+        dottedLoader.backgroundColor = UIColor.white
+        dottedLoader.alpha = 0
+        view.addSubview(dottedLoader)
+    }
+    
     func transitionToSearchState(keyboardHeight:CGFloat) {
         
         searchTableView.contentOffset = CGPoint(x: 0, y: -searchTableView.contentInset.top)
         let tableY = kStatusBarHeight + kTextFieldHeight + 3*kDefaultPadding
         
         UIView.animate(withDuration: 0.17, animations: {
-            self.searchTextField.frame = CGRect(x: self.searchTextField.frame.origin.x, y: kStatusBarHeight + kDefaultPadding, width: self.searchTextField.frame.width, height: self.searchTextField.frame.height)
+            self.searchTextField.frame = CGRect(x: self.searchTextField.frame.origin.x, y: kStatusBarHeight + kDefaultPadding, width: (self.view.frame.size.width - 2*kSidePadding) - 2*kDefaultPadding - kDottedLoaderWidth, height: self.searchTextField.frame.height)
+            self.dottedLoader.frame = CGRect(x: self.searchTextField.frame.origin.x + self.searchTextField.frame.width + kDefaultPadding, y: self.searchTextField.frame.origin.y + self.searchTextField.frame.height/2 - kDottedLoaderHeight/2, width: kDottedLoaderWidth, height: kDottedLoaderHeight)
+            
         }) { (finished) in
             
             UIView.animate(withDuration: 0.15, animations: {
@@ -111,8 +121,26 @@ class WDSearchViewController: UIViewController {
     }
     
     func clearResults() {
+        hideDottedLoader()
         wordSearchObject.clearSearch()
         searchTableView.reloadData()
+    }
+    
+    func showDottedLoader() {
+        if dottedLoader.alpha == 0 {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.dottedLoader.alpha = 1
+            }, completion: { (finished) in
+                self.dottedLoader.startAnimating()
+            })
+        }
+    }
+    
+    func hideDottedLoader() {
+        dottedLoader.stopAnimating()
+        UIView.animate(withDuration: 0.2) {
+            self.dottedLoader.alpha = 0
+        }
     }
     
 }
@@ -128,6 +156,7 @@ extension WDSearchViewController:UITextFieldDelegate {
         let updatedText = existingText.replacingCharacters(in: range, with: string)
         if updatedText.count > 1 {
             wordSearchObject.performSearch(withQuery: updatedText, delegate: self)
+            showDottedLoader()
         }
         else {
             clearResults()
@@ -146,14 +175,13 @@ extension WDSearchViewController:UITableViewDataSource,UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: kSearchResultReuseIdentifer)!
         
         if let cell = cell as? WDSearchResultTableViewCell {
-            
-            cell.setTitle(wordSearchObject.searchResultsFor(query: searchTextField.text!)[indexPath.row])
+            cell.setTitle(wordSearchObject.searchResults[indexPath.row])
         }
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return wordSearchObject.searchResultsFor(query: searchTextField.text!).count
+        return wordSearchObject.searchResults.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -164,10 +192,12 @@ extension WDSearchViewController:UITableViewDataSource,UITableViewDelegate {
 extension WDSearchViewController:WordSearchDelegate {
     func didPerformSearchSuccessfully(forQuery query: String) {
         searchTableView.reloadData()
+        hideDottedLoader()
     }
     
     func didFailToSearch(query: String) {
-        
+        searchTableView.reloadData()
+        hideDottedLoader()
     }
     
     

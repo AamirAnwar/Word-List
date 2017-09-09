@@ -18,6 +18,7 @@
 		43B1D6B71F61B8B10094C96B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43B1D6B51F61B8B10094C96B /* LaunchScreen.storyboard */; };
 		43BB41601F643297006B3AA3 /* WDAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BB415F1F643297006B3AA3 /* WDAPIManager.swift */; };
 		43BB41621F643475006B3AA3 /* WDWordSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BB41611F643475006B3AA3 /* WDWordSearch.swift */; };
+		43D9F9B61F644AE600B1D446 /* WDDottedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D9F9B51F644AE600B1D446 /* WDDottedLoader.swift */; };
 		7737109C7239524149CBC055 /* Pods_Wordist.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A52202801637D1FC91D81AD /* Pods_Wordist.framework */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +37,7 @@
 		43B1D6B81F61B8B10094C96B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		43BB415F1F643297006B3AA3 /* WDAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDAPIManager.swift; sourceTree = "<group>"; };
 		43BB41611F643475006B3AA3 /* WDWordSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDWordSearch.swift; sourceTree = "<group>"; };
+		43D9F9B51F644AE600B1D446 /* WDDottedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDDottedLoader.swift; sourceTree = "<group>"; };
 		8261EAD1A4C721531DD78853 /* Pods-Wordist.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wordist.release.xcconfig"; path = "Pods/Target Support Files/Pods-Wordist/Pods-Wordist.release.xcconfig"; sourceTree = "<group>"; };
 		9A52202801637D1FC91D81AD /* Pods_Wordist.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wordist.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -78,6 +80,7 @@
 				4367E4A71F62F02E00D4176C /* WDColors.swift */,
 				43B1D6AE1F61B8B10094C96B /* WDSearchViewController.swift */,
 				43BB41611F643475006B3AA3 /* WDWordSearch.swift */,
+				43D9F9B51F644AE600B1D446 /* WDDottedLoader.swift */,
 				43BB415F1F643297006B3AA3 /* WDAPIManager.swift */,
 				435AD4FB1F630453001CD10C /* WDSearchResultTableViewCell.swift */,
 				435AD4FD1F630B7F001CD10C /* WDSeparator.swift */,
@@ -237,6 +240,7 @@
 				435AD4FE1F630B7F001CD10C /* WDSeparator.swift in Sources */,
 				4367E4A81F62F02E00D4176C /* WDColors.swift in Sources */,
 				43B1D6AF1F61B8B10094C96B /* WDSearchViewController.swift in Sources */,
+				43D9F9B61F644AE600B1D446 /* WDDottedLoader.swift in Sources */,
 				43BB41621F643475006B3AA3 /* WDWordSearch.swift in Sources */,
 				4367E4A61F62EF6F00D4176C /* WDFonts.swift in Sources */,
 				43B1D6AD1F61B8B10094C96B /* AppDelegate.swift in Sources */,
@@ -375,7 +379,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C3RT9P7X65;
 				INFOPLIST_FILE = Wordist/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.aamiranwar.Wordist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -392,7 +396,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C3RT9P7X65;
 				INFOPLIST_FILE = Wordist/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.aamiranwar.Wordist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
