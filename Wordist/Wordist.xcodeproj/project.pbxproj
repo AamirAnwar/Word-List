@@ -7,29 +7,49 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4344148F1F655ADE0039827F /* ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 43BDC2181F6558AD007C01E9 /* ionicons.ttf */; };
 		435AD4FC1F630453001CD10C /* WDSearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435AD4FB1F630453001CD10C /* WDSearchResultTableViewCell.swift */; };
 		435AD4FE1F630B7F001CD10C /* WDSeparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435AD4FD1F630B7F001CD10C /* WDSeparator.swift */; };
 		4367E4A41F62ECAF00D4176C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4367E4A31F62ECAF00D4176C /* Constants.swift */; };
 		4367E4A61F62EF6F00D4176C /* WDFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4367E4A51F62EF6F00D4176C /* WDFonts.swift */; };
 		4367E4A81F62F02E00D4176C /* WDColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4367E4A71F62F02E00D4176C /* WDColors.swift */; };
+		4389BA7A1F65AA5D00E3EFC2 /* WDHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4389BA791F65AA5D00E3EFC2 /* WDHelpers.swift */; };
 		43B1D6AD1F61B8B10094C96B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B1D6AC1F61B8B10094C96B /* AppDelegate.swift */; };
 		43B1D6AF1F61B8B10094C96B /* WDSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B1D6AE1F61B8B10094C96B /* WDSearchViewController.swift */; };
 		43B1D6B41F61B8B10094C96B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43B1D6B31F61B8B10094C96B /* Assets.xcassets */; };
 		43B1D6B71F61B8B10094C96B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43B1D6B51F61B8B10094C96B /* LaunchScreen.storyboard */; };
+		43BB41601F643297006B3AA3 /* WDAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BB415F1F643297006B3AA3 /* WDAPIManager.swift */; };
+		43BB41621F643475006B3AA3 /* WDWordSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BB41611F643475006B3AA3 /* WDWordSearch.swift */; };
+		43BDC2131F653D11007C01E9 /* WordObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BDC2121F653D11007C01E9 /* WordObject.swift */; };
+		43BDC2151F654DF3007C01E9 /* WDWordDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BDC2141F654DF3007C01E9 /* WDWordDetailViewController.swift */; };
+		43BDC2171F6557BD007C01E9 /* WDNavigationHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BDC2161F6557BD007C01E9 /* WDNavigationHeader.swift */; };
+		43D9F9B61F644AE600B1D446 /* WDDottedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D9F9B51F644AE600B1D446 /* WDDottedLoader.swift */; };
+		7737109C7239524149CBC055 /* Pods_Wordist.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A52202801637D1FC91D81AD /* Pods_Wordist.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F19F52029E78F57547A7DBE /* Pods-Wordist.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wordist.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wordist/Pods-Wordist.debug.xcconfig"; sourceTree = "<group>"; };
 		435AD4FB1F630453001CD10C /* WDSearchResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDSearchResultTableViewCell.swift; sourceTree = "<group>"; };
 		435AD4FD1F630B7F001CD10C /* WDSeparator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDSeparator.swift; sourceTree = "<group>"; };
 		4367E4A31F62ECAF00D4176C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4367E4A51F62EF6F00D4176C /* WDFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDFonts.swift; sourceTree = "<group>"; };
 		4367E4A71F62F02E00D4176C /* WDColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDColors.swift; sourceTree = "<group>"; };
+		4389BA791F65AA5D00E3EFC2 /* WDHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDHelpers.swift; sourceTree = "<group>"; };
 		43B1D6A91F61B8B10094C96B /* Wordist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wordist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43B1D6AC1F61B8B10094C96B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		43B1D6AE1F61B8B10094C96B /* WDSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDSearchViewController.swift; sourceTree = "<group>"; };
 		43B1D6B31F61B8B10094C96B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		43B1D6B61F61B8B10094C96B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		43B1D6B81F61B8B10094C96B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		43BB415F1F643297006B3AA3 /* WDAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDAPIManager.swift; sourceTree = "<group>"; };
+		43BB41611F643475006B3AA3 /* WDWordSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDWordSearch.swift; sourceTree = "<group>"; };
+		43BDC2121F653D11007C01E9 /* WordObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordObject.swift; sourceTree = "<group>"; };
+		43BDC2141F654DF3007C01E9 /* WDWordDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDWordDetailViewController.swift; sourceTree = "<group>"; };
+		43BDC2161F6557BD007C01E9 /* WDNavigationHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDNavigationHeader.swift; sourceTree = "<group>"; };
+		43BDC2181F6558AD007C01E9 /* ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ionicons.ttf; sourceTree = "<group>"; };
+		43D9F9B51F644AE600B1D446 /* WDDottedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDDottedLoader.swift; sourceTree = "<group>"; };
+		8261EAD1A4C721531DD78853 /* Pods-Wordist.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wordist.release.xcconfig"; path = "Pods/Target Support Files/Pods-Wordist/Pods-Wordist.release.xcconfig"; sourceTree = "<group>"; };
+		9A52202801637D1FC91D81AD /* Pods_Wordist.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wordist.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7737109C7239524149CBC055 /* Pods_Wordist.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -48,6 +69,8 @@
 			children = (
 				43B1D6AB1F61B8B10094C96B /* Wordist */,
 				43B1D6AA1F61B8B10094C96B /* Products */,
+				EBA55086A9CA2D569B10A830 /* Pods */,
+				6CCDA07673FA0CC1757C18B9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -66,14 +89,39 @@
 				4367E4A31F62ECAF00D4176C /* Constants.swift */,
 				4367E4A71F62F02E00D4176C /* WDColors.swift */,
 				43B1D6AE1F61B8B10094C96B /* WDSearchViewController.swift */,
+				43BDC2141F654DF3007C01E9 /* WDWordDetailViewController.swift */,
+				43BDC2161F6557BD007C01E9 /* WDNavigationHeader.swift */,
+				43BB41611F643475006B3AA3 /* WDWordSearch.swift */,
+				43D9F9B51F644AE600B1D446 /* WDDottedLoader.swift */,
+				43BB415F1F643297006B3AA3 /* WDAPIManager.swift */,
 				435AD4FB1F630453001CD10C /* WDSearchResultTableViewCell.swift */,
 				435AD4FD1F630B7F001CD10C /* WDSeparator.swift */,
 				4367E4A51F62EF6F00D4176C /* WDFonts.swift */,
+				43BDC2181F6558AD007C01E9 /* ionicons.ttf */,
 				43B1D6B31F61B8B10094C96B /* Assets.xcassets */,
 				43B1D6B51F61B8B10094C96B /* LaunchScreen.storyboard */,
 				43B1D6B81F61B8B10094C96B /* Info.plist */,
+				43BDC2121F653D11007C01E9 /* WordObject.swift */,
+				4389BA791F65AA5D00E3EFC2 /* WDHelpers.swift */,
 			);
 			path = Wordist;
+			sourceTree = "<group>";
+		};
+		6CCDA07673FA0CC1757C18B9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9A52202801637D1FC91D81AD /* Pods_Wordist.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EBA55086A9CA2D569B10A830 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1F19F52029E78F57547A7DBE /* Pods-Wordist.debug.xcconfig */,
+				8261EAD1A4C721531DD78853 /* Pods-Wordist.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,9 +131,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 43B1D6BB1F61B8B10094C96B /* Build configuration list for PBXNativeTarget "Wordist" */;
 			buildPhases = (
+				8F034C03EBD5FF2B0975A0B2 /* [CP] Check Pods Manifest.lock */,
 				43B1D6A51F61B8B10094C96B /* Sources */,
 				43B1D6A61F61B8B10094C96B /* Frameworks */,
 				43B1D6A71F61B8B10094C96B /* Resources */,
+				87548592187FA858005C49C5 /* [CP] Embed Pods Frameworks */,
+				89CEDBDA1BF31A18C1ED353B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -135,6 +186,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4344148F1F655ADE0039827F /* ionicons.ttf in Resources */,
 				43B1D6B71F61B8B10094C96B /* LaunchScreen.storyboard in Resources */,
 				43B1D6B41F61B8B10094C96B /* Assets.xcassets in Resources */,
 			);
@@ -142,18 +194,79 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		87548592187FA858005C49C5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Wordist/Pods-Wordist-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Wordist/Pods-Wordist-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		89CEDBDA1BF31A18C1ED353B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Wordist/Pods-Wordist-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8F034C03EBD5FF2B0975A0B2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Wordist-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		43B1D6A51F61B8B10094C96B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4389BA7A1F65AA5D00E3EFC2 /* WDHelpers.swift in Sources */,
 				435AD4FE1F630B7F001CD10C /* WDSeparator.swift in Sources */,
 				4367E4A81F62F02E00D4176C /* WDColors.swift in Sources */,
 				43B1D6AF1F61B8B10094C96B /* WDSearchViewController.swift in Sources */,
+				43D9F9B61F644AE600B1D446 /* WDDottedLoader.swift in Sources */,
+				43BDC2151F654DF3007C01E9 /* WDWordDetailViewController.swift in Sources */,
+				43BDC2131F653D11007C01E9 /* WordObject.swift in Sources */,
+				43BB41621F643475006B3AA3 /* WDWordSearch.swift in Sources */,
 				4367E4A61F62EF6F00D4176C /* WDFonts.swift in Sources */,
 				43B1D6AD1F61B8B10094C96B /* AppDelegate.swift in Sources */,
+				43BB41601F643297006B3AA3 /* WDAPIManager.swift in Sources */,
 				4367E4A41F62ECAF00D4176C /* Constants.swift in Sources */,
 				435AD4FC1F630453001CD10C /* WDSearchResultTableViewCell.swift in Sources */,
+				43BDC2171F6557BD007C01E9 /* WDNavigationHeader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,12 +393,13 @@
 		};
 		43B1D6BC1F61B8B10094C96B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1F19F52029E78F57547A7DBE /* Pods-Wordist.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C3RT9P7X65;
 				INFOPLIST_FILE = Wordist/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.aamiranwar.Wordist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -296,12 +410,13 @@
 		};
 		43B1D6BD1F61B8B10094C96B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8261EAD1A4C721531DD78853 /* Pods-Wordist.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C3RT9P7X65;
 				INFOPLIST_FILE = Wordist/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.aamiranwar.Wordist;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -37,6 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let searchNav = UINavigationController(rootViewController: searchViewController)
         searchNav.navigationBar.isHidden = true
         searchNav.tabBarItem.title = "Search"
+        searchNav.navigationBar.tintColor = WDMainTheme
         // List view controller TODO
         
         // Settings view controller TODO
