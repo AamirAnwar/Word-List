@@ -18,7 +18,7 @@ class WordSearch {
     static let apiEndpoint = "https://api.datamuse.com/words"
     fileprivate var delegate:WordSearchDelegate?
     fileprivate var currentQuery:String?
-    var searchResults = [String]()
+    var searchResults = [WordObject]()
     fileprivate var currentRequestID:Int?
     
     func performSearch(withQuery query:String, delegate:WordSearchDelegate) {
@@ -70,8 +70,8 @@ extension WordSearch:WDAPIManagerDelegate {
             if let wordsResponseList = response["response"] as? Array<Any> {
                 
                 for wordObject in wordsResponseList {
-                    if let wordObject = wordObject as? Dictionary<String,Any>, let word = wordObject["word"] as? String {
-                        searchResults += [word]
+                    if let wordObjectResponse = wordObject as? Dictionary<String,Any>, let wordObject = WordObject.init(withDictionary:wordObjectResponse )  {
+                        searchResults += [wordObject]
                     }
                 }
             }
