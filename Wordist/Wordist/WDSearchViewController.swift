@@ -28,6 +28,13 @@ class WDSearchViewController: UIViewController {
         createDottedLoader()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if searchTextField.text?.isEmpty == false {
+           searchTextField.becomeFirstResponder()
+        }
+    }
+    
     func registerForNotifications() {
         NotificationCenter.default.addObserver(self, selector:#selector(willShowKeyboard(notification:)) , name: Notification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector:#selector(willHideKeyboard) , name: Notification.Name.UIKeyboardWillHide, object: nil)
@@ -175,7 +182,7 @@ extension WDSearchViewController:UITableViewDataSource,UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: kSearchResultReuseIdentifer)!
         
         if let cell = cell as? WDSearchResultTableViewCell {
-            cell.setTitle(wordSearchObject.searchResults[indexPath.row])
+            cell.setTitle(wordSearchObject.searchResults[indexPath.row].word)
         }
         return cell
     }
@@ -186,6 +193,9 @@ extension WDSearchViewController:UITableViewDataSource,UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
+        view.endEditing(true)
+        let wordDetailVC = WDWordDetailViewController.init(withWord: wordSearchObject.searchResults[indexPath.row])
+        self.navigationController?.pushViewController(wordDetailVC, animated: true)
     }
 }
 
