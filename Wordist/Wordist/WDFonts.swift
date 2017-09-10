@@ -14,4 +14,5 @@ let WDFontSearchTitleDemiBold = UIFont(name: "AvenirNext-DemiBold", size: 36)!
 let WDFontSectionHeader = UIFont(name: "AvenirNext-DemiBold", size: 18)!
 let WDFontBodyText = UIFont(name: "AvenirNext-Regular", size: 18)!
 let WDFontTitleMedium = UIFont(name: "AvenirNext-Medium", size: 24)!
+let WDFontBigButtonTitle = UIFont(name: "AvenirNext-DemiBold", size: 24)!
 let WDIconFont = UIFont(name: "ionicons", size: 18)!

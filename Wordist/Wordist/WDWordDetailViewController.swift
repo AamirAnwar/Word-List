@@ -15,11 +15,12 @@ class WDWordDetailViewController: UIViewController {
     let definitionHeadingLabel = UILabel()
     let definitionLabel = UILabel()
     fileprivate var wordObject:WordObject!
+    var shouldShowAddButton = false
     let headerView = WDNavigationHeader()
-    
     let wordLabelSeparator = WDSeparator.init(type: .WDSeparatorTypeMiddle, frame: .zero)
     let definitionLabelSeparator = WDSeparator.init(type: .WDSeparatorTypeMiddle, frame: .zero)
-    
+    let bottomRectButton = WDRoundRectButton()
+        
     convenience init(withWord word:WordObject) {
         self.init()
         self.wordObject = word
@@ -28,15 +29,13 @@ class WDWordDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
+        view.backgroundColor = UIColor.white
         
         // Navigation header view
         headerView.setBackButton(title: "Search")
         headerView.delegate = self
         view.addSubview(headerView)
         
-        view.backgroundColor = UIColor.white
         
         wordLabel.text = self.wordObject.word
         definitionLabel.text = self.wordObject.definition
@@ -51,6 +50,7 @@ class WDWordDetailViewController: UIViewController {
         definitionHeadingLabel.translatesAutoresizingMaskIntoConstraints = false
         definitionLabel.translatesAutoresizingMaskIntoConstraints = false
         definitionLabelSeparator.translatesAutoresizingMaskIntoConstraints = false
+        bottomRectButton.translatesAutoresizingMaskIntoConstraints = false
         
         
         wordLabel.font = WDFontSearchTitleDemiBold
@@ -62,16 +62,17 @@ class WDWordDetailViewController: UIViewController {
         definitionLabel.font = WDFontBodyText
         definitionLabel.textColor = WDTextBlack
         
+        
+        bottomRectButton.setTitle("Add", for: .normal)
+        
+        
         view.addSubview(wordLabel)
         view.addSubview(wordLabelSeparator)
         view.addSubview(definitionHeadingLabel)
         view.addSubview(definitionLabel)
         view.addSubview(definitionLabelSeparator)
-        
+        view.addSubview(bottomRectButton)
         // Constraints
-        
-        
-        
         NSLayoutConstraint.activate([
             headerView.topAnchor.constraint(equalTo: view.topAnchor, constant:kStatusBarHeight),
             headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -109,9 +110,23 @@ class WDWordDetailViewController: UIViewController {
             definitionLabelSeparator.trailingAnchor.constraint(equalTo: definitionLabel.trailingAnchor),
             definitionLabelSeparator.heightAnchor.constraint(equalToConstant: kSeparatorHeight)
             ])
+        
+        
+        let tabBarHeight = self.tabBarController?.tabBar.frame.size.height
+        var bottomPadding = kDefaultPadding
+        if let tabBarHeight = tabBarHeight {
+            bottomPadding += tabBarHeight
+        }
+        
+        NSLayoutConstraint.activate([
+            bottomRectButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: kSidePadding),
+            bottomRectButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -kSidePadding),
+            bottomRectButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -(bottomPadding) )
+            ])
+        
+        bottomRectButton.isHidden = !shouldShowAddButton
+        
     }
-
-    
 }
 
 extension WDWordDetailViewController:WDNavigationHeaderDelegate {
