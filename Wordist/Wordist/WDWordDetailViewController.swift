@@ -53,7 +53,7 @@ class WDWordDetailViewController: UIViewController {
         bottomRectButton.translatesAutoresizingMaskIntoConstraints = false
         
         
-        wordLabel.font = WDFontSearchTitleDemiBold
+        wordLabel.font = WDFontBigTitleSemiBold
         wordLabel.textColor = WDTextBlack
         
         definitionHeadingLabel.font = WDFontSectionHeader

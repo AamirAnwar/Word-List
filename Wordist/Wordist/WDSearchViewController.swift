@@ -57,7 +57,7 @@ class WDSearchViewController: UIViewController {
         searchTextField.tintColor = WDTextBlack
         let placeholderAttributes = [NSAttributedStringKey.font: WDFontSearchPlaceholderBig as Any,
                                      NSAttributedStringKey.foregroundColor: WDLightGray as Any]
-        searchTextField.font = WDFontSearchTitleDemiBold
+        searchTextField.font = WDFontBigTitleSemiBold
         searchTextField.textColor = WDTextBlack
         searchTextField.attributedPlaceholder = NSAttributedString.init(string: "Search a word", attributes: placeholderAttributes)
         searchTextField.delegate = self

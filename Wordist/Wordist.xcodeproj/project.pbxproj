@@ -15,6 +15,9 @@
 		4367E4A81F62F02E00D4176C /* WDColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4367E4A71F62F02E00D4176C /* WDColors.swift */; };
 		4389BA7A1F65AA5D00E3EFC2 /* WDHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4389BA791F65AA5D00E3EFC2 /* WDHelpers.swift */; };
 		4389BA7C1F65ADB600E3EFC2 /* WDRoundRectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4389BA7B1F65ADB600E3EFC2 /* WDRoundRectButton.swift */; };
+		4389BA7E1F65B4EB00E3EFC2 /* WDBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4389BA7D1F65B4EB00E3EFC2 /* WDBaseViewController.swift */; };
+		4389BA801F65B7E800E3EFC2 /* WDSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4389BA7F1F65B7E800E3EFC2 /* WDSettingsViewController.swift */; };
+		4389BA821F65BC1300E3EFC2 /* WDWordListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4389BA811F65BC1300E3EFC2 /* WDWordListViewController.swift */; };
 		43B1D6AD1F61B8B10094C96B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B1D6AC1F61B8B10094C96B /* AppDelegate.swift */; };
 		43B1D6AF1F61B8B10094C96B /* WDSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B1D6AE1F61B8B10094C96B /* WDSearchViewController.swift */; };
 		43B1D6B41F61B8B10094C96B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43B1D6B31F61B8B10094C96B /* Assets.xcassets */; };
@@ -37,6 +40,9 @@
 		4367E4A71F62F02E00D4176C /* WDColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDColors.swift; sourceTree = "<group>"; };
 		4389BA791F65AA5D00E3EFC2 /* WDHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDHelpers.swift; sourceTree = "<group>"; };
 		4389BA7B1F65ADB600E3EFC2 /* WDRoundRectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDRoundRectButton.swift; sourceTree = "<group>"; };
+		4389BA7D1F65B4EB00E3EFC2 /* WDBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDBaseViewController.swift; sourceTree = "<group>"; };
+		4389BA7F1F65B7E800E3EFC2 /* WDSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDSettingsViewController.swift; sourceTree = "<group>"; };
+		4389BA811F65BC1300E3EFC2 /* WDWordListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDWordListViewController.swift; sourceTree = "<group>"; };
 		43B1D6A91F61B8B10094C96B /* Wordist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wordist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43B1D6AC1F61B8B10094C96B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		43B1D6AE1F61B8B10094C96B /* WDSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDSearchViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +112,9 @@
 				43BDC2121F653D11007C01E9 /* WordObject.swift */,
 				4389BA791F65AA5D00E3EFC2 /* WDHelpers.swift */,
 				4389BA7B1F65ADB600E3EFC2 /* WDRoundRectButton.swift */,
+				4389BA7D1F65B4EB00E3EFC2 /* WDBaseViewController.swift */,
+				4389BA7F1F65B7E800E3EFC2 /* WDSettingsViewController.swift */,
+				4389BA811F65BC1300E3EFC2 /* WDWordListViewController.swift */,
 			);
 			path = Wordist;
 			sourceTree = "<group>";
@@ -259,13 +268,16 @@
 				4389BA7A1F65AA5D00E3EFC2 /* WDHelpers.swift in Sources */,
 				435AD4FE1F630B7F001CD10C /* WDSeparator.swift in Sources */,
 				4367E4A81F62F02E00D4176C /* WDColors.swift in Sources */,
+				4389BA801F65B7E800E3EFC2 /* WDSettingsViewController.swift in Sources */,
 				43B1D6AF1F61B8B10094C96B /* WDSearchViewController.swift in Sources */,
 				43D9F9B61F644AE600B1D446 /* WDDottedLoader.swift in Sources */,
 				43BDC2151F654DF3007C01E9 /* WDWordDetailViewController.swift in Sources */,
+				4389BA821F65BC1300E3EFC2 /* WDWordListViewController.swift in Sources */,
 				43BDC2131F653D11007C01E9 /* WordObject.swift in Sources */,
 				43BB41621F643475006B3AA3 /* WDWordSearch.swift in Sources */,
 				4389BA7C1F65ADB600E3EFC2 /* WDRoundRectButton.swift in Sources */,
 				4367E4A61F62EF6F00D4176C /* WDFonts.swift in Sources */,
+				4389BA7E1F65B4EB00E3EFC2 /* WDBaseViewController.swift in Sources */,
 				43B1D6AD1F61B8B10094C96B /* AppDelegate.swift in Sources */,
 				43BB41601F643297006B3AA3 /* WDAPIManager.swift in Sources */,
 				4367E4A41F62ECAF00D4176C /* Constants.swift in Sources */,
