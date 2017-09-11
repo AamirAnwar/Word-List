@@ -15,6 +15,8 @@
 		4367E4A41F62ECAF00D4176C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4367E4A31F62ECAF00D4176C /* Constants.swift */; };
 		4367E4A61F62EF6F00D4176C /* WDFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4367E4A51F62EF6F00D4176C /* WDFonts.swift */; };
 		4367E4A81F62F02E00D4176C /* WDColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4367E4A71F62F02E00D4176C /* WDColors.swift */; };
+		43681C1E1F66F08B00BC91D6 /* WDEmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43681C1D1F66F08B00BC91D6 /* WDEmptyStateView.swift */; };
+		43681C201F66FE1A00BC91D6 /* WDBlackoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43681C1F1F66FE1A00BC91D6 /* WDBlackoutView.swift */; };
 		4389BA7A1F65AA5D00E3EFC2 /* WDHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4389BA791F65AA5D00E3EFC2 /* WDHelpers.swift */; };
 		4389BA7C1F65ADB600E3EFC2 /* WDRoundRectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4389BA7B1F65ADB600E3EFC2 /* WDRoundRectButton.swift */; };
 		4389BA7E1F65B4EB00E3EFC2 /* WDBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4389BA7D1F65B4EB00E3EFC2 /* WDBaseViewController.swift */; };
@@ -42,6 +44,8 @@
 		4367E4A31F62ECAF00D4176C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4367E4A51F62EF6F00D4176C /* WDFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDFonts.swift; sourceTree = "<group>"; };
 		4367E4A71F62F02E00D4176C /* WDColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDColors.swift; sourceTree = "<group>"; };
+		43681C1D1F66F08B00BC91D6 /* WDEmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDEmptyStateView.swift; sourceTree = "<group>"; };
+		43681C1F1F66FE1A00BC91D6 /* WDBlackoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDBlackoutView.swift; sourceTree = "<group>"; };
 		4389BA791F65AA5D00E3EFC2 /* WDHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDHelpers.swift; sourceTree = "<group>"; };
 		4389BA7B1F65ADB600E3EFC2 /* WDRoundRectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDRoundRectButton.swift; sourceTree = "<group>"; };
 		4389BA7D1F65B4EB00E3EFC2 /* WDBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDBaseViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +101,7 @@
 		43B1D6AB1F61B8B10094C96B /* Wordist */ = {
 			isa = PBXGroup;
 			children = (
+				43681C1F1F66FE1A00BC91D6 /* WDBlackoutView.swift */,
 				43B1D6AC1F61B8B10094C96B /* AppDelegate.swift */,
 				4367E4A31F62ECAF00D4176C /* Constants.swift */,
 				4367E4A71F62F02E00D4176C /* WDColors.swift */,
@@ -117,6 +122,7 @@
 				43B1D6B81F61B8B10094C96B /* Info.plist */,
 				43BDC2121F653D11007C01E9 /* WordObject.swift */,
 				4389BA791F65AA5D00E3EFC2 /* WDHelpers.swift */,
+				43681C1D1F66F08B00BC91D6 /* WDEmptyStateView.swift */,
 				4389BA7B1F65ADB600E3EFC2 /* WDRoundRectButton.swift */,
 				4389BA7D1F65B4EB00E3EFC2 /* WDBaseViewController.swift */,
 				4389BA7F1F65B7E800E3EFC2 /* WDSettingsViewController.swift */,
@@ -277,10 +283,12 @@
 				431AE45A1F669ABD00AAA93B /* WDBulletListView.swift in Sources */,
 				4367E4A81F62F02E00D4176C /* WDColors.swift in Sources */,
 				4389BA801F65B7E800E3EFC2 /* WDSettingsViewController.swift in Sources */,
+				43681C201F66FE1A00BC91D6 /* WDBlackoutView.swift in Sources */,
 				43B1D6AF1F61B8B10094C96B /* WDSearchViewController.swift in Sources */,
 				43D9F9B61F644AE600B1D446 /* WDDottedLoader.swift in Sources */,
 				43BDC2151F654DF3007C01E9 /* WDWordDetailViewController.swift in Sources */,
 				4389BA821F65BC1300E3EFC2 /* WDWordListViewController.swift in Sources */,
+				43681C1E1F66F08B00BC91D6 /* WDEmptyStateView.swift in Sources */,
 				43BDC2131F653D11007C01E9 /* WordObject.swift in Sources */,
 				43BB41621F643475006B3AA3 /* WDWordSearch.swift in Sources */,
 				4389BA7C1F65ADB600E3EFC2 /* WDRoundRectButton.swift in Sources */,
