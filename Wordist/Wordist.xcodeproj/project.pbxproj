@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		431AE4581F6666DB00AAA93B /* WDWordListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431AE4571F6666DB00AAA93B /* WDWordListManager.swift */; };
 		4344148F1F655ADE0039827F /* ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 43BDC2181F6558AD007C01E9 /* ionicons.ttf */; };
 		435AD4FC1F630453001CD10C /* WDSearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435AD4FB1F630453001CD10C /* WDSearchResultTableViewCell.swift */; };
 		435AD4FE1F630B7F001CD10C /* WDSeparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435AD4FD1F630B7F001CD10C /* WDSeparator.swift */; };
@@ -33,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		1F19F52029E78F57547A7DBE /* Pods-Wordist.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wordist.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wordist/Pods-Wordist.debug.xcconfig"; sourceTree = "<group>"; };
+		431AE4571F6666DB00AAA93B /* WDWordListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDWordListManager.swift; sourceTree = "<group>"; };
 		435AD4FB1F630453001CD10C /* WDSearchResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDSearchResultTableViewCell.swift; sourceTree = "<group>"; };
 		435AD4FD1F630B7F001CD10C /* WDSeparator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDSeparator.swift; sourceTree = "<group>"; };
 		4367E4A31F62ECAF00D4176C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				4367E4A51F62EF6F00D4176C /* WDFonts.swift */,
 				43BDC2181F6558AD007C01E9 /* ionicons.ttf */,
 				43B1D6B31F61B8B10094C96B /* Assets.xcassets */,
+				431AE4571F6666DB00AAA93B /* WDWordListManager.swift */,
 				43B1D6B51F61B8B10094C96B /* LaunchScreen.storyboard */,
 				43B1D6B81F61B8B10094C96B /* Info.plist */,
 				43BDC2121F653D11007C01E9 /* WordObject.swift */,
@@ -267,6 +270,7 @@
 			files = (
 				4389BA7A1F65AA5D00E3EFC2 /* WDHelpers.swift in Sources */,
 				435AD4FE1F630B7F001CD10C /* WDSeparator.swift in Sources */,
+				431AE4581F6666DB00AAA93B /* WDWordListManager.swift in Sources */,
 				4367E4A81F62F02E00D4176C /* WDColors.swift in Sources */,
 				4389BA801F65B7E800E3EFC2 /* WDSettingsViewController.swift in Sources */,
 				43B1D6AF1F61B8B10094C96B /* WDSearchViewController.swift in Sources */,
