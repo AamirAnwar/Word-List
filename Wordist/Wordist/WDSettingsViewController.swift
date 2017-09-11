@@ -13,6 +13,7 @@ class WDSettingsViewController: WDBaseViewController {
     var nightModeSwitch: UISwitch?
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "Settings"
         self.headingLabel.text = "Settings"
         self.contentTableView.delegate = self
         self.contentTableView.dataSource = self
@@ -35,7 +36,7 @@ extension WDSettingsViewController:UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SettingsCellReuseIdentifier)
-        cell?.textLabel?.font = WDFontBigBodyText
+        cell?.textLabel?.font = WDFontTitleMedium
         cell?.textLabel?.text = tableData[indexPath.row]
         if indexPath.row == 0 {
             nightModeSwitch = UISwitch()
