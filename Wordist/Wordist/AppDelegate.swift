@@ -31,19 +31,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func getMainViewControllers() -> [UIViewController] {
-        // Search view controller
+        return [getSearchViewController(),getWordListViewController(),getSettingsViewController()]
+    }
+    
+    func getSearchViewController() -> UINavigationController {
         let searchViewController = WDSearchViewController()
         
         let searchNav = UINavigationController(rootViewController: searchViewController)
         searchNav.navigationBar.isHidden = true
         searchNav.tabBarItem.title = "Search"
+        searchNav.tabBarItem.image = #imageLiteral(resourceName: "SearchIcon")
         searchNav.navigationBar.tintColor = WDMainTheme
-        // List view controller TODO
-        
-        // Settings view controller TODO
-        
-        return [searchNav]
+        return searchNav
     }
+    
+    func getSettingsViewController() -> UINavigationController {
+        let settingsViewController = WDSettingsViewController()
+        
+        let nav = UINavigationController(rootViewController: settingsViewController)
+        nav.navigationBar.isHidden = true
+        nav.tabBarItem.title = "Settings"
+        nav.tabBarItem.image = #imageLiteral(resourceName: "SettingsIcon")
+        nav.navigationBar.tintColor = WDMainTheme
+        return nav
+    }
+    
+    func getWordListViewController() -> UINavigationController {
+        let wordListViewController = WDWordListViewController()
+        
+        let nav = UINavigationController(rootViewController: wordListViewController)
+        nav.navigationBar.isHidden = true
+        nav.tabBarItem.title = "List"
+        nav.tabBarItem.image = #imageLiteral(resourceName: "ListIcon")
+        nav.navigationBar.tintColor = WDMainTheme
+        return nav
+    }
+    
+
+    
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

@@ -57,7 +57,7 @@ class WDSearchViewController: UIViewController {
         searchTextField.tintColor = WDTextBlack
         let placeholderAttributes = [NSAttributedStringKey.font: WDFontSearchPlaceholderBig as Any,
                                      NSAttributedStringKey.foregroundColor: WDLightGray as Any]
-        searchTextField.font = WDFontSearchTitleDemiBold
+        searchTextField.font = WDFontBigTitleSemiBold
         searchTextField.textColor = WDTextBlack
         searchTextField.attributedPlaceholder = NSAttributedString.init(string: "Search a word", attributes: placeholderAttributes)
         searchTextField.delegate = self
@@ -79,8 +79,9 @@ class WDSearchViewController: UIViewController {
     }
     
     func transitionToSearchState(keyboardHeight:CGFloat) {
-        
-        searchTableView.contentOffset = CGPoint(x: 0, y: -searchTableView.contentInset.top)
+        if self.searchTableView.alpha == 0 {
+            searchTableView.contentOffset = CGPoint(x: 0, y: -searchTableView.contentInset.top)
+        }
         let tableY = kStatusBarHeight + kTextFieldHeight + 3*kDefaultPadding
         
         UIView.animate(withDuration: 0.17, animations: {
@@ -195,6 +196,7 @@ extension WDSearchViewController:UITableViewDataSource,UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: false)
         view.endEditing(true)
         let wordDetailVC = WDWordDetailViewController.init(withWord: wordSearchObject.searchResults[indexPath.row])
+        wordDetailVC.shouldShowAddButton = true
         self.navigationController?.pushViewController(wordDetailVC, animated: true)
     }
 }
