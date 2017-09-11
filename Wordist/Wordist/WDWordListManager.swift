@@ -74,6 +74,11 @@ class WDWordListManager {
         return (false , -1)
     }
     
+    func removeAllWords() {
+        savedWords.removeAll()
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotificationDidRemoveAllWords), object: nil)
+    }
+    
     fileprivate func loadSavedWords() -> [WordObject] {
         var loadedWords:[WordObject] = []
         
