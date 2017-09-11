@@ -9,6 +9,11 @@
 import UIKit
 let DefinitionHeadingString = "Definition"
 
+protocol WDWordDetailViewControllerDelegate {
+    func didSaveWord(wordInstance:WordObject)
+    func didRemoveWord(wordInstance:WordObject)
+}
+
 class WDWordDetailViewController: UIViewController {
     
     let wordLabel = UILabel()
@@ -20,6 +25,7 @@ class WDWordDetailViewController: UIViewController {
     let wordLabelSeparator = WDSeparator.init(type: .WDSeparatorTypeMiddle, frame: .zero)
     let definitionLabelSeparator = WDSeparator.init(type: .WDSeparatorTypeMiddle, frame: .zero)
     let bottomRectButton = WDRoundRectButton()
+    var delegate:WDWordDetailViewControllerDelegate?
         
     convenience init(withWord word:WordObject) {
         self.init()
@@ -32,7 +38,11 @@ class WDWordDetailViewController: UIViewController {
         view.backgroundColor = UIColor.white
         
         // Navigation header view
-        headerView.setBackButton(title: "Search")
+        headerView.setBackButton(title: "")
+        if let backTitle = self.navigationController?.navigationBar.items?.last?.title {
+            headerView.setBackButton(title: backTitle)
+        }
+        
         headerView.delegate = self
         view.addSubview(headerView)
         
@@ -62,9 +72,8 @@ class WDWordDetailViewController: UIViewController {
         definitionLabel.font = WDFontBodyText
         definitionLabel.textColor = WDTextBlack
         
-        
-        bottomRectButton.setTitle("Add", for: .normal)
-        
+        refreshBottomButton()
+        bottomRectButton.addTarget(self, action: #selector(bottomButtonTapped), for: .touchUpInside)
         
         view.addSubview(wordLabel)
         view.addSubview(wordLabelSeparator)
@@ -126,6 +135,32 @@ class WDWordDetailViewController: UIViewController {
         
         bottomRectButton.isHidden = !shouldShowAddButton
         
+    }
+    
+    func refreshBottomButton() {
+        if WDWordListManager.sharedInstance.isWordSaved(word: self.wordObject).exists == true {
+            bottomRectButton.setTitle("Added", for: .normal)
+            bottomRectButton.roundRectButtonState = .WDRoundRectButtonStateGreen
+        }
+        else {
+            bottomRectButton.setTitle("Add", for: .normal)
+        }
+    }
+    
+    @objc func bottomButtonTapped() {
+        switch bottomRectButton.roundRectButtonState {
+        case .WDRoundRectButtonStateDefault:
+            WDWordListManager.sharedInstance.save(word: self.wordObject)
+            bottomRectButton.roundRectButtonState = .WDRoundRectButtonStateGreen
+            delegate?.didSaveWord(wordInstance: self.wordObject)
+            
+            
+        case .WDRoundRectButtonStateGreen:
+            WDWordListManager.sharedInstance.remove(word: self.wordObject)
+            bottomRectButton.roundRectButtonState = .WDRoundRectButtonStateDefault
+            delegate?.didRemoveWord(wordInstance: self.wordObject)
+        }
+        refreshBottomButton()
     }
 }
 
