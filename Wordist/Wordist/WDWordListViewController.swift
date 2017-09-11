@@ -12,12 +12,13 @@ let WordListCellReuseIdentifier = "WordListCellReuseIdentifier"
 class WDWordListViewController: WDBaseViewController {
     
     var tableData = [WordObject]()
-    var nightModeSwitch: UISwitch?
+    let emptyStateView = WDEmptyStateView()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        createEmptyStateView()
         NotificationCenter.default.addObserver(self, selector: #selector(refreshTableView), name: Notification.Name(NotificationDidSaveWord), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(refreshTableView), name: Notification.Name(NotificationDidRemoveWord), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshTableView), name: Notification.Name(NotificationDidRemoveAllWords), object: nil)
         
         self.headingLabel.text = "List"
         self.navigationItem.title = "List"
@@ -25,13 +26,33 @@ class WDWordListViewController: WDBaseViewController {
         self.contentTableView.dataSource = self
         self.contentTableView.rowHeight = 78
         self.contentTableView.register(UITableViewCell.self, forCellReuseIdentifier: WordListCellReuseIdentifier)
-        self.tableData = WDWordListManager.sharedInstance.getWords()
+        refreshTableView()
+    }
+    
+    func createEmptyStateView() {
+        emptyStateView.translatesAutoresizingMaskIntoConstraints = false
+        emptyStateView.isHidden = true
+        view.addSubview(emptyStateView)
+        
+        NSLayoutConstraint.activate([
+            emptyStateView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            emptyStateView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            emptyStateView.topAnchor.constraint(equalTo: view.topAnchor),
+            emptyStateView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            ])
     }
     
     
     @objc func refreshTableView() {
         tableData = WDWordListManager.sharedInstance.getWords()
         self.contentTableView.reloadData()
+        if tableData.isEmpty == true {
+            emptyStateView.isHidden = false
+        }
+        else {
+            emptyStateView.isHidden = true
+        }
+        
     }
         
 }

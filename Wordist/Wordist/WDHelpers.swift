@@ -7,11 +7,36 @@
 //
 
 import Foundation
+import UIKit
 
 enum WDHelpers {
     static func documentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return paths[0]
+    }
+    
+    static func blackout(view:UIView) -> WDBlackoutView? {
+        guard let superView = view.superview else {
+            return nil
+        }
+        
+        let blackoutView = WDBlackoutView()
+        blackoutView.frame = superView.frame
+        blackoutView.cutoutRect = view.frame
+        blackoutView.backgroundColor = UIColor.clear
+        blackoutView.isOpaque = false
+        superView.addSubview(blackoutView)
+        blackoutView.alpha = 0
+        
+        UIView.animate(withDuration: 0.3) {
+            
+            blackoutView.alpha = 1
+        }
+        
+        
+        
+        return blackoutView
+        
     }
     
 }

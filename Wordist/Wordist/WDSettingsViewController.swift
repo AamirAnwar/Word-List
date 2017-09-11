@@ -13,6 +13,10 @@ class WDSettingsViewController: WDBaseViewController {
     var nightModeSwitch: UISwitch?
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(createTableData), name: Notification.Name(NotificationDidSaveWord), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(createTableData), name: Notification.Name(NotificationDidRemoveWord), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(createTableData), name: Notification.Name(NotificationDidRemoveAllWords), object: nil)
+        
         self.navigationItem.title = "Settings"
         self.headingLabel.text = "Settings"
         self.contentTableView.delegate = self
@@ -23,8 +27,14 @@ class WDSettingsViewController: WDBaseViewController {
         createTableData()
     }
     
-    func createTableData() {
-        self.tableData += ["Night Mode", "Licences", "About"]
+    @objc func createTableData() {
+        self.tableData.removeAll()
+        self.tableData += ["Licences", "About"]
+        if WDWordListManager.sharedInstance.getWords().isEmpty == false {
+            self.tableData += ["Delete saved words"]
+        }
+        self.contentTableView.reloadData()
+        
     }
 }
 
@@ -38,20 +48,45 @@ extension WDSettingsViewController:UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: SettingsCellReuseIdentifier)
         cell?.textLabel?.font = WDFontTitleMedium
         cell?.textLabel?.text = tableData[indexPath.row]
-        if indexPath.row == 0 {
-            nightModeSwitch = UISwitch()
-            nightModeSwitch?.onTintColor = WDMainTheme
-            cell?.selectionStyle = .none
-            cell?.accessoryView = nightModeSwitch
+        cell?.tintColor = WDMainTheme
+        if indexPath.row == self.tableData.count - 1 && WDWordListManager.sharedInstance.getWords().isEmpty == false  {
+            cell?.textLabel?.textColor = WDMainTheme
         }
         else {
-            cell?.tintColor = WDMainTheme
             cell?.accessoryType = .disclosureIndicator
         }
+//        if indexPath.row == 0 {
+//            nightModeSwitch = UISwitch()
+//            nightModeSwitch?.onTintColor = WDMainTheme
+//            cell?.selectionStyle = .none
+//            cell?.accessoryView = nightModeSwitch
+//        }
+//        else {
+//            cell?.tintColor = WDMainTheme
+//            cell?.accessoryType = .disclosureIndicator
+//        }
         return cell!
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
+        if indexPath.row == self.tableData.count - 1 {
+            showAlert()
+        }
+    }
+    
+    func showAlert() {
+        let alertController = UIAlertController.init(title: "Are you sure?", message: "This action will delete all saved words from the application and is irreversible", preferredStyle: .alert)
+        let deleteAction = UIAlertAction.init(title: "Delete", style: .destructive) { (action) in
+            WDWordListManager.sharedInstance.removeAllWords()
+        }
+        
+        let cancelAction = UIAlertAction.init(title: "Cancel", style: .cancel) { (action) in
+            
+        }
+        
+        alertController.addAction(deleteAction)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion: nil)
     }
     
 }

@@ -10,32 +10,36 @@ import UIKit
 
 class WordObject: NSObject {
     let word:String
-    let definition:String
+    let definitions:[String]
     override var description: String {
-        return "Word:\(word) \n Definition:\(definition)\n"
+        return "Word:\(word) \n Definition:\(definitions)\n"
     }
     
     required init?(coder aDecoder: NSCoder) {
-        guard let word = aDecoder.decodeObject(forKey: "word") as? String, let definition = aDecoder.decodeObject(forKey: "definition") as? String else {
+        guard let word = aDecoder.decodeObject(forKey: "word") as? String, let definition = aDecoder.decodeObject(forKey: "definition") as? [String] else {
             return nil
         }
         self.word = word
-        self.definition = definition
+        self.definitions = definition
         super.init()
     }
     
-    init(word:String, definition:String) {
+    init(word:String, definitions:[String]) {
         self.word = word
-        self.definition = definition
+        self.definitions = definitions
         super.init()
     }
     
     init?(withDictionary responseDict:[String:Any]) {
-        guard let word = responseDict["word"] as? String, let definitions = responseDict["defs"] as? [String], let definition = definitions.first else {
+        guard let word = responseDict["word"] as? String, let definitions = responseDict["defs"] as? [String] else {
             return nil
         }
         self.word = word
-        self.definition = WordObject.getSanitizedDefinitionFrom(rawDefinition: definition)
+        var sanitizedDefinitions:[String] = []
+        for definition in definitions {
+            sanitizedDefinitions += [WordObject.getSanitizedDefinitionFrom(rawDefinition: definition)]
+        }
+        self.definitions = sanitizedDefinitions
         super.init()
     }
     
@@ -59,6 +63,6 @@ class WordObject: NSObject {
 extension WordObject:NSCoding {
     func encode(with aCoder: NSCoder) {
         aCoder.encode(self.word, forKey: "word")
-        aCoder.encode(self.definition, forKey: "definition")
+        aCoder.encode(self.definitions, forKey: "definition")
     }
 }
