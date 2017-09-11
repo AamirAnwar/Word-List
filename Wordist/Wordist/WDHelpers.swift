@@ -8,6 +8,15 @@
 
 import Foundation
 
+enum WDHelpers {
+    static func documentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
+    }
+    
+}
+
+
 extension String {
     func convertHtmlSymbols() throws -> String? {
         guard let data = data(using: .utf8) else { return nil }
