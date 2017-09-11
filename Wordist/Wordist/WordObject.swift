@@ -12,8 +12,18 @@ class WordObject: NSObject {
     let word:String
     let definition:String
     override var description: String {
-        return "\(word) \(definition)"
+        return "Word:\(word) \n Definition:\(definition)\n"
     }
+    
+    required init?(coder aDecoder: NSCoder) {
+        guard let word = aDecoder.decodeObject(forKey: "word") as? String, let definition = aDecoder.decodeObject(forKey: "definition") as? String else {
+            return nil
+        }
+        self.word = word
+        self.definition = definition
+        super.init()
+    }
+    
     init(word:String, definition:String) {
         self.word = word
         self.definition = definition
@@ -43,5 +53,12 @@ class WordObject: NSObject {
         else {
             return rawDefinition
         }
+    }
+}
+
+extension WordObject:NSCoding {
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(self.word, forKey: "word")
+        aCoder.encode(self.definition, forKey: "definition")
     }
 }
