@@ -22,6 +22,7 @@ class WDSearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "Search"
         registerForNotifications()
         createSearchTextField()
         createTableView()
