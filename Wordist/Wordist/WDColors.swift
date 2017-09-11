@@ -15,6 +15,8 @@ let WDMainTheme = UIColor.init(hex:0xFE5F55)
 let WDLightGray = UIColor.init(hex: 0xDDDDDD)
 let WDTextBlack = UIColor.init(hex:0x2D2D2D)
 let WDSeparatorGray = UIColor.init(hex:0xEAEAEA)
+let WDColorGreen = UIColor.init(hex:0x8FD446)
+
 
 extension UIColor {
     convenience init(red:Int, green:Int, blue:Int) {
