@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 let WDFontSearchPlaceholderBig = UIFont(name: "AvenirNext-Regular", size: 36)!
+let WDFontSearchPlaceholderMedium = UIFont(name: "AvenirNext-Regular", size: 24)!
 let WDFontBigTitleSemiBold = UIFont(name: "AvenirNext-DemiBold", size: 36)!
 let WDFontSectionHeader = UIFont(name: "AvenirNext-DemiBold", size: 18)!
 let WDFontBodyText = UIFont(name: "AvenirNext-Regular", size: 18)!

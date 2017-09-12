@@ -30,13 +30,6 @@ class WDSearchViewController: UIViewController {
         createDottedLoader()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        if searchTextField.text?.isEmpty == false {
-           searchTextField.becomeFirstResponder()
-        }
-    }
-    
     func registerForNotifications() {
         NotificationCenter.default.addObserver(self, selector:#selector(willShowKeyboard(notification:)) , name: Notification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector:#selector(willHideKeyboard) , name: Notification.Name.UIKeyboardWillHide, object: nil)
@@ -57,7 +50,12 @@ class WDSearchViewController: UIViewController {
     fileprivate func createSearchTextField() {
         searchTextField.frame = CGRect(x: kSidePadding, y: (view.frame.size.height - kTextFieldHeight)/2 - 20, width: view.frame.size.width - 2*kSidePadding, height: kTextFieldHeight)
         searchTextField.tintColor = WDTextBlack
-        let placeholderAttributes = [NSAttributedStringKey.font: WDFontSearchPlaceholderBig as Any,
+        
+        var placeholderFont = WDFontSearchPlaceholderBig
+        if view.frame.width <= 320 {
+            placeholderFont = WDFontSearchPlaceholderMedium
+        }
+        let placeholderAttributes = [NSAttributedStringKey.font: placeholderFont as Any,
                                      NSAttributedStringKey.foregroundColor: WDLightGray as Any]
         searchTextField.font = WDFontBigTitleSemiBold
         searchTextField.textColor = WDTextBlack
