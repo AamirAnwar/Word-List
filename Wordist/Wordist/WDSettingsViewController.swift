@@ -29,7 +29,7 @@ class WDSettingsViewController: WDBaseViewController {
     
     @objc func createTableData() {
         self.tableData.removeAll()
-        self.tableData += ["Licences", "About"]
+        self.tableData += ["Licences"]
         if WDWordListManager.sharedInstance.getWords().isEmpty == false {
             self.tableData += ["Delete saved words"]
         }
@@ -69,8 +69,12 @@ extension WDSettingsViewController:UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
-        if indexPath.row == self.tableData.count - 1 {
+        if indexPath.row == self.tableData.count - 1 && WDWordListManager.sharedInstance.getWords().isEmpty == false {
             showAlert()
+        }
+        else if indexPath.row == 0 {
+            
+            self.navigationController?.pushViewController( WDWebViewController(), animated: true)
         }
     }
     
