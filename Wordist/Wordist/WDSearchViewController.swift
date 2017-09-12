@@ -12,6 +12,7 @@ let kTextFieldHeight:CGFloat = 55
 let kSearchResultReuseIdentifer = "kSearchResultCell"
 let kDottedLoaderWidth:CGFloat = 52
 let kDottedLoaderHeight:CGFloat = 16
+let tableY = kStatusBarHeight + kTextFieldHeight + 3*kDefaultPadding
 
 class WDSearchViewController: UIViewController {
     let searchTextField = UITextField()
@@ -83,7 +84,6 @@ class WDSearchViewController: UIViewController {
         if self.searchTableView.alpha == 0 {
             searchTableView.contentOffset = CGPoint(x: 0, y: -searchTableView.contentInset.top)
         }
-        let tableY = kStatusBarHeight + kTextFieldHeight + 3*kDefaultPadding
         
         UIView.animate(withDuration: 0.17, animations: {
             self.searchTextField.frame = CGRect(x: self.searchTextField.frame.origin.x, y: kStatusBarHeight + kDefaultPadding, width: (self.view.frame.size.width - 2*kSidePadding) - 2*kDefaultPadding - kDottedLoaderWidth, height: self.searchTextField.frame.height)
@@ -108,6 +108,17 @@ class WDSearchViewController: UIViewController {
                 self.searchTextField.frame = CGRect(x: kSidePadding, y: searchFieldOriginY, width: self.view.frame.size.width - 2*kSidePadding, height: self.searchTextField.frame.height)
                 self.searchTableView.alpha = 0.0
             }
+        }
+        else {
+            self.searchTableView.alpha = 1
+            var bottomPadding:CGFloat = 0.0
+            if let tabBarHeight = self.tabBarController?.tabBar.frame.size.height {
+                bottomPadding += tabBarHeight
+            }
+            UIView.animate(withDuration: 0.15, animations: {
+                self.searchTableView.frame = CGRect(x: 0, y: tableY, width: self.view.frame.width , height: self.view.frame.height - tableY - bottomPadding)
+                
+            })
         }
     }
     

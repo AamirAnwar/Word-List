@@ -36,9 +36,10 @@ class WDEmptyStateView: UIView {
         
         messageLabel.textColor = WDTextBlack
         messageLabel.translatesAutoresizingMaskIntoConstraints = false
+        messageLabel.textAlignment = .center
         messageLabel.font = WDFontBodyText
         messageLabel.numberOfLines = 0
-        messageLabel.text = "You dont seem to have any words saved\n Any words you add will show up here!"
+        messageLabel.text = "You don't seem to have any words saved.\n Words you add will show up here!"
         self.addSubview(messageLabel)
         
         NSLayoutConstraint.activate([
