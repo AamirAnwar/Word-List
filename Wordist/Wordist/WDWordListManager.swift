@@ -31,7 +31,7 @@ class WDWordListManager {
             return
         }
         savedWords.insert(word, at: 0)
-        print("\(word) saved!")
+//        print("\(word) saved!")
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotificationDidSaveWord), object: word)
         
     }
@@ -43,7 +43,7 @@ class WDWordListManager {
             return
         }
         savedWords.remove(at: index)
-        print("\(word) removed!")
+//        print("\(word) removed!")
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotificationDidRemoveWord), object: word)
     }
     

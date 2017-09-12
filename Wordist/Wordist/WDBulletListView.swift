@@ -174,11 +174,10 @@ class WDBulletListView: UIView {
             line.trailingAnchor.constraint(equalTo: dot.centerXAnchor, constant:1),
             ])
         self.layoutIfNeeded()
+        
         let distance =  Double((nextDot.center.y - dot.center.y))
-        
-        let animDuration:Double = distance/(1000)
-        
-        //print("Covering a distance of \(distance) at a speed of \(distance) pps in \(animDuration) for \(bulletLabelDots.count) dots!")
+        let animSpeed:Double = 1000
+        let animDuration:Double = distance/(animSpeed)
         print("Animation duration - \(animDuration)")
         line.bottomAnchor.constraint(equalTo: nextDot.centerYAnchor).isActive = true
         UIView.animate(withDuration: animDuration, animations: {
