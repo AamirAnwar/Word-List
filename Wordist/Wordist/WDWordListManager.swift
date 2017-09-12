@@ -19,7 +19,6 @@ class WDWordListManager {
     fileprivate var savedWords:[WordObject] = []
     
     init() {
-        // Load previous words here TODO
         savedWords = loadSavedWords()
         NotificationCenter.default.addObserver(self, selector: #selector(saveWords), name: Notification.Name.UIApplicationDidEnterBackground, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(saveWords), name: Notification.Name.UIApplicationWillTerminate, object: nil)
@@ -81,14 +80,10 @@ class WDWordListManager {
     
     fileprivate func loadSavedWords() -> [WordObject] {
         var loadedWords:[WordObject] = []
-        
         if let data = try? Data(contentsOf: filePath) {
             let unarchiver = NSKeyedUnarchiver(forReadingWith: data)
             loadedWords = unarchiver.decodeObject(forKey: SavedWordsKey) as! [WordObject]
             unarchiver.finishDecoding()
-        }
-        else {
-            savedWords = []
         }
         return loadedWords
     }

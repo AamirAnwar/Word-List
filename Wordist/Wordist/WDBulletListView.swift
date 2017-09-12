@@ -14,6 +14,7 @@ class WDBulletListView: UIView {
     var bulletData:[String] = []
     var bulletLabels:[UILabel] = []
     var bulletLabelDots:[UIView] = []
+    var lineView:UIView?
     let containerView = UIView()
     
     required init?(coder aDecoder: NSCoder) {
@@ -139,7 +140,7 @@ class WDBulletListView: UIView {
                 dot.transform = CGAffineTransform(scaleX: 0, y: 0)
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.27, execute: {
-                self.animateLines()
+                self.animateLine()
                 self.animateDots()
             })
 
@@ -150,22 +151,26 @@ class WDBulletListView: UIView {
         for dot in bulletLabelDots {
             UIView.animate(withDuration: 0.8, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.1, options: .curveEaseInOut, animations: {
                 dot.transform = .identity
-            }, completion: { (finished) in
-            })
-
+            }, completion: nil)
         }
     }
     
 
-    func animateLines() {
+    func animateLine() {
         guard bulletLabelDots.isEmpty == false else {
             return
         }
+        
+        if let line = lineView {
+            line.removeFromSuperview()
+        }
+        
         let dot = bulletLabelDots[0]
         let nextDot = bulletLabelDots[bulletLabelDots.count - 1]
         let line = UIView()
         line.translatesAutoresizingMaskIntoConstraints = false
         line.backgroundColor = WDMainTheme
+        self.lineView = line
         containerView.addSubview(line)
         
         NSLayoutConstraint.activate([

@@ -34,7 +34,6 @@ class WDSettingsViewController: WDBaseViewController {
             self.tableData += ["Delete saved words"]
         }
         self.contentTableView.reloadData()
-        
     }
 }
 
@@ -73,7 +72,6 @@ extension WDSettingsViewController:UITableViewDelegate, UITableViewDataSource {
             showAlert()
         }
         else if indexPath.row == 0 {
-            
             self.navigationController?.pushViewController( WDWebViewController(), animated: true)
         }
     }

@@ -17,9 +17,11 @@ class WDWebViewController: UIViewController,WDNavigationHeaderDelegate {
         view.backgroundColor = UIColor.white
         
         // Navigation header view
-        headerView.setBackButton(title: "")
         if let backTitle = self.navigationController?.navigationBar.items?.last?.title {
             headerView.setBackButton(title: backTitle)
+        }
+        else {
+            headerView.setBackButton(title: "Back")
         }
         headerView.delegate = self
         headerView.translatesAutoresizingMaskIntoConstraints = false
@@ -31,8 +33,6 @@ class WDWebViewController: UIViewController,WDNavigationHeaderDelegate {
             headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             headerView.heightAnchor.constraint(equalToConstant: kNavigationBarHeight)
             ])
-        
-        
         webView.translatesAutoresizingMaskIntoConstraints = false
         webView.scrollView.maximumZoomScale = 1
         webView.scrollView.minimumZoomScale = 1
@@ -50,25 +50,19 @@ class WDWebViewController: UIViewController,WDNavigationHeaderDelegate {
             webView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant:-bottomPadding)
             ])
         
-        
         if let urlString = Bundle.main.path(forResource: "licences", ofType: "html"), let _ = URL(string:urlString) {
             do {
                 let htmlString = try NSString(contentsOfFile: urlString, encoding: String.Encoding.utf8.rawValue)
-                
                 webView.loadHTMLString(htmlString as String, baseURL: nil)
-                
             }
             catch {
                 print("Invalid HTML")
             }
         }
-        
     }
 
     func didTapBackButton() {
          self.navigationController?.popViewController(animated: true)
     }
     
- 
-
 }

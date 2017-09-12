@@ -32,13 +32,8 @@ enum WDHelpers {
             
             blackoutView.alpha = 1
         }
-        
-        
-        
         return blackoutView
-        
     }
-    
 }
 
 

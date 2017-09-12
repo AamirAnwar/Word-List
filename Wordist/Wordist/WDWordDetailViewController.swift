@@ -18,12 +18,10 @@ class WDWordDetailViewController: UIViewController {
     
     let wordLabel = UILabel()
     let definitionHeadingLabel = UILabel()
-    let definitionLabel = UILabel()
     fileprivate var wordObject:WordObject!
     var shouldShowAddButton = false
     let headerView = WDNavigationHeader()
     let wordLabelSeparator = WDSeparator.init(type: .WDSeparatorTypeMiddle, frame: .zero)
-    let definitionLabelSeparator = WDSeparator.init(type: .WDSeparatorTypeMiddle, frame: .zero)
     let bottomRectButton = WDRoundRectButton()
     var delegate:WDWordDetailViewControllerDelegate?
     let bulletView:WDBulletListView = WDBulletListView()
@@ -43,9 +41,11 @@ class WDWordDetailViewController: UIViewController {
         view.backgroundColor = UIColor.white
         
         // Navigation header view
-        headerView.setBackButton(title: "")
         if let backTitle = self.navigationController?.navigationBar.items?.last?.title {
             headerView.setBackButton(title: backTitle)
+        }
+        else {
+            headerView.setBackButton(title: "")
         }
         
         headerView.delegate = self
@@ -53,18 +53,17 @@ class WDWordDetailViewController: UIViewController {
         
         
         wordLabel.text = self.wordObject.word
-//        definitionLabel.text = self.wordObject.definition
+
         definitionHeadingLabel.text = DefinitionHeadingString
         
         wordLabel.numberOfLines = 0
-        definitionLabel.numberOfLines = 0
+        
         
         headerView.translatesAutoresizingMaskIntoConstraints = false
         wordLabel.translatesAutoresizingMaskIntoConstraints = false
         wordLabelSeparator.translatesAutoresizingMaskIntoConstraints = false
         definitionHeadingLabel.translatesAutoresizingMaskIntoConstraints = false
-        definitionLabel.translatesAutoresizingMaskIntoConstraints = false
-        definitionLabelSeparator.translatesAutoresizingMaskIntoConstraints = false
+        
         bottomRectButton.translatesAutoresizingMaskIntoConstraints = false
         bulletView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -74,22 +73,15 @@ class WDWordDetailViewController: UIViewController {
         definitionHeadingLabel.font = WDFontSectionHeader
         definitionHeadingLabel.textColor = WDLightGray
         
-        definitionLabel.font = WDFontBodyText
-        definitionLabel.textColor = WDTextBlack
         
         refreshBottomButton()
         bottomRectButton.addTarget(self, action: #selector(bottomButtonTapped), for: .touchUpInside)
         
-        
         bulletView.setBullets(bullets: self.wordObject.definitions)
-        
-        
         
         view.addSubview(wordLabel)
         view.addSubview(wordLabelSeparator)
         view.addSubview(definitionHeadingLabel)
-//        view.addSubview(definitionLabel)
-//        view.addSubview(definitionLabelSeparator)
         view.addSubview(bulletView)
         view.addSubview(bottomRectButton)
         // Constraints
@@ -124,21 +116,6 @@ class WDWordDetailViewController: UIViewController {
             bulletView.topAnchor.constraint(equalTo: definitionHeadingLabel.bottomAnchor, constant:kDefaultPadding),
             bulletView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
             ])
-        
-        
-        
-//        NSLayoutConstraint.activate([
-//            definitionLabel.topAnchor.constraint(equalTo: definitionHeadingLabel.bottomAnchor, constant: kDefaultPadding),
-//            definitionLabel.leadingAnchor.constraint(equalTo: wordLabel.leadingAnchor),
-//            definitionLabel.trailingAnchor.constraint(equalTo: wordLabel.trailingAnchor),
-//
-//
-//            definitionLabelSeparator.topAnchor.constraint(equalTo: definitionLabel.bottomAnchor, constant: 5),
-//            definitionLabelSeparator.leadingAnchor.constraint(equalTo: wordLabelSeparator.leadingAnchor),
-//            definitionLabelSeparator.trailingAnchor.constraint(equalTo: definitionLabel.trailingAnchor),
-//            definitionLabelSeparator.heightAnchor.constraint(equalToConstant: kSeparatorHeight)
-//            ])
-//
         
         let tabBarHeight = self.tabBarController?.tabBar.frame.size.height
         var bottomPadding = kDefaultPadding
@@ -181,13 +158,11 @@ class WDWordDetailViewController: UIViewController {
         switch bottomRectButton.roundRectButtonState {
         case .WDRoundRectButtonStateDefault:
             WDWordListManager.sharedInstance.save(word: self.wordObject)
-            bottomRectButton.roundRectButtonState = .WDRoundRectButtonStateGreen
             delegate?.didSaveWord(wordInstance: self.wordObject)
             
             
         case .WDRoundRectButtonStateGreen:
             WDWordListManager.sharedInstance.remove(word: self.wordObject)
-            bottomRectButton.roundRectButtonState = .WDRoundRectButtonStateDefault
             delegate?.didRemoveWord(wordInstance: self.wordObject)
         }
         refreshBottomButton()
