@@ -39,7 +39,6 @@ class WDEmptyStateView: UIView {
         messageLabel.textAlignment = .center
         messageLabel.font = WDFontBodyText
         messageLabel.numberOfLines = 0
-        messageLabel.text = "You don't seem to have any words saved.\n Words you add will show up here!"
         self.addSubview(messageLabel)
         
         NSLayoutConstraint.activate([
@@ -50,10 +49,12 @@ class WDEmptyStateView: UIView {
         NSLayoutConstraint.activate([
             messageLabel.centerXAnchor.constraint(equalTo: iconLabel.centerXAnchor),
             messageLabel.topAnchor.constraint(equalTo: iconLabel.bottomAnchor, constant: 2*kDefaultPadding),
-            
+            messageLabel.leadingAnchor.constraint(lessThanOrEqualTo: self.leadingAnchor, constant:kSidePadding),
+            messageLabel.trailingAnchor.constraint(lessThanOrEqualTo: self.trailingAnchor, constant:-kSidePadding)
             ])
-        
-        
-        
+    }
+    
+    func setEmptyStateMessage(message:String) {
+        messageLabel.text = message
     }
 }
