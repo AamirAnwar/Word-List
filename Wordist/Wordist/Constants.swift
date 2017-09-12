@@ -14,3 +14,6 @@ let kDefaultPadding:CGFloat = 8
 let kCornerRadius:CGFloat = 4
 let kSeparatorHeight:CGFloat = 1
 let kNavigationBarHeight:CGFloat = 44
+let NotificationDidSaveWord = "NotificationDidSaveWord"
+let NotificationDidRemoveWord = "NotificationDidRemoveWord"
+let NotificationDidRemoveAllWords = "NotificationDidRemovedAllWords"

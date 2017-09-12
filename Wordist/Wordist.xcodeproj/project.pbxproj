@@ -7,12 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		431AE4581F6666DB00AAA93B /* WDWordListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431AE4571F6666DB00AAA93B /* WDWordListManager.swift */; };
+		431AE45A1F669ABD00AAA93B /* WDBulletListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431AE4591F669ABD00AAA93B /* WDBulletListView.swift */; };
 		4344148F1F655ADE0039827F /* ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 43BDC2181F6558AD007C01E9 /* ionicons.ttf */; };
 		435AD4FC1F630453001CD10C /* WDSearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435AD4FB1F630453001CD10C /* WDSearchResultTableViewCell.swift */; };
 		435AD4FE1F630B7F001CD10C /* WDSeparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435AD4FD1F630B7F001CD10C /* WDSeparator.swift */; };
 		4367E4A41F62ECAF00D4176C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4367E4A31F62ECAF00D4176C /* Constants.swift */; };
 		4367E4A61F62EF6F00D4176C /* WDFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4367E4A51F62EF6F00D4176C /* WDFonts.swift */; };
 		4367E4A81F62F02E00D4176C /* WDColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4367E4A71F62F02E00D4176C /* WDColors.swift */; };
+		43681C1E1F66F08B00BC91D6 /* WDEmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43681C1D1F66F08B00BC91D6 /* WDEmptyStateView.swift */; };
+		43681C201F66FE1A00BC91D6 /* WDBlackoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43681C1F1F66FE1A00BC91D6 /* WDBlackoutView.swift */; };
 		4389BA7A1F65AA5D00E3EFC2 /* WDHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4389BA791F65AA5D00E3EFC2 /* WDHelpers.swift */; };
 		4389BA7C1F65ADB600E3EFC2 /* WDRoundRectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4389BA7B1F65ADB600E3EFC2 /* WDRoundRectButton.swift */; };
 		4389BA7E1F65B4EB00E3EFC2 /* WDBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4389BA7D1F65B4EB00E3EFC2 /* WDBaseViewController.swift */; };
@@ -22,6 +26,8 @@
 		43B1D6AF1F61B8B10094C96B /* WDSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B1D6AE1F61B8B10094C96B /* WDSearchViewController.swift */; };
 		43B1D6B41F61B8B10094C96B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43B1D6B31F61B8B10094C96B /* Assets.xcassets */; };
 		43B1D6B71F61B8B10094C96B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43B1D6B51F61B8B10094C96B /* LaunchScreen.storyboard */; };
+		43BA5B321F67C31300F03F66 /* WDWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BA5B311F67C31300F03F66 /* WDWebViewController.swift */; };
+		43BA5B341F67C70B00F03F66 /* licences.html in Resources */ = {isa = PBXBuildFile; fileRef = 43BA5B331F67C53200F03F66 /* licences.html */; };
 		43BB41601F643297006B3AA3 /* WDAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BB415F1F643297006B3AA3 /* WDAPIManager.swift */; };
 		43BB41621F643475006B3AA3 /* WDWordSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BB41611F643475006B3AA3 /* WDWordSearch.swift */; };
 		43BDC2131F653D11007C01E9 /* WordObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BDC2121F653D11007C01E9 /* WordObject.swift */; };
@@ -33,11 +39,15 @@
 
 /* Begin PBXFileReference section */
 		1F19F52029E78F57547A7DBE /* Pods-Wordist.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wordist.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wordist/Pods-Wordist.debug.xcconfig"; sourceTree = "<group>"; };
+		431AE4571F6666DB00AAA93B /* WDWordListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDWordListManager.swift; sourceTree = "<group>"; };
+		431AE4591F669ABD00AAA93B /* WDBulletListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDBulletListView.swift; sourceTree = "<group>"; };
 		435AD4FB1F630453001CD10C /* WDSearchResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDSearchResultTableViewCell.swift; sourceTree = "<group>"; };
 		435AD4FD1F630B7F001CD10C /* WDSeparator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDSeparator.swift; sourceTree = "<group>"; };
 		4367E4A31F62ECAF00D4176C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4367E4A51F62EF6F00D4176C /* WDFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDFonts.swift; sourceTree = "<group>"; };
 		4367E4A71F62F02E00D4176C /* WDColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDColors.swift; sourceTree = "<group>"; };
+		43681C1D1F66F08B00BC91D6 /* WDEmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDEmptyStateView.swift; sourceTree = "<group>"; };
+		43681C1F1F66FE1A00BC91D6 /* WDBlackoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDBlackoutView.swift; sourceTree = "<group>"; };
 		4389BA791F65AA5D00E3EFC2 /* WDHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDHelpers.swift; sourceTree = "<group>"; };
 		4389BA7B1F65ADB600E3EFC2 /* WDRoundRectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDRoundRectButton.swift; sourceTree = "<group>"; };
 		4389BA7D1F65B4EB00E3EFC2 /* WDBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDBaseViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +59,8 @@
 		43B1D6B31F61B8B10094C96B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		43B1D6B61F61B8B10094C96B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		43B1D6B81F61B8B10094C96B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		43BA5B311F67C31300F03F66 /* WDWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDWebViewController.swift; sourceTree = "<group>"; };
+		43BA5B331F67C53200F03F66 /* licences.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = licences.html; sourceTree = "<group>"; };
 		43BB415F1F643297006B3AA3 /* WDAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDAPIManager.swift; sourceTree = "<group>"; };
 		43BB41611F643475006B3AA3 /* WDWordSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDWordSearch.swift; sourceTree = "<group>"; };
 		43BDC2121F653D11007C01E9 /* WordObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordObject.swift; sourceTree = "<group>"; };
@@ -93,7 +105,10 @@
 		43B1D6AB1F61B8B10094C96B /* Wordist */ = {
 			isa = PBXGroup;
 			children = (
+				43681C1F1F66FE1A00BC91D6 /* WDBlackoutView.swift */,
+				43BA5B311F67C31300F03F66 /* WDWebViewController.swift */,
 				43B1D6AC1F61B8B10094C96B /* AppDelegate.swift */,
+				43BA5B331F67C53200F03F66 /* licences.html */,
 				4367E4A31F62ECAF00D4176C /* Constants.swift */,
 				4367E4A71F62F02E00D4176C /* WDColors.swift */,
 				43B1D6AE1F61B8B10094C96B /* WDSearchViewController.swift */,
@@ -107,10 +122,13 @@
 				4367E4A51F62EF6F00D4176C /* WDFonts.swift */,
 				43BDC2181F6558AD007C01E9 /* ionicons.ttf */,
 				43B1D6B31F61B8B10094C96B /* Assets.xcassets */,
+				431AE4571F6666DB00AAA93B /* WDWordListManager.swift */,
+				431AE4591F669ABD00AAA93B /* WDBulletListView.swift */,
 				43B1D6B51F61B8B10094C96B /* LaunchScreen.storyboard */,
 				43B1D6B81F61B8B10094C96B /* Info.plist */,
 				43BDC2121F653D11007C01E9 /* WordObject.swift */,
 				4389BA791F65AA5D00E3EFC2 /* WDHelpers.swift */,
+				43681C1D1F66F08B00BC91D6 /* WDEmptyStateView.swift */,
 				4389BA7B1F65ADB600E3EFC2 /* WDRoundRectButton.swift */,
 				4389BA7D1F65B4EB00E3EFC2 /* WDBaseViewController.swift */,
 				4389BA7F1F65B7E800E3EFC2 /* WDSettingsViewController.swift */,
@@ -200,6 +218,7 @@
 			files = (
 				4344148F1F655ADE0039827F /* ionicons.ttf in Resources */,
 				43B1D6B71F61B8B10094C96B /* LaunchScreen.storyboard in Resources */,
+				43BA5B341F67C70B00F03F66 /* licences.html in Resources */,
 				43B1D6B41F61B8B10094C96B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -267,12 +286,16 @@
 			files = (
 				4389BA7A1F65AA5D00E3EFC2 /* WDHelpers.swift in Sources */,
 				435AD4FE1F630B7F001CD10C /* WDSeparator.swift in Sources */,
+				431AE4581F6666DB00AAA93B /* WDWordListManager.swift in Sources */,
+				431AE45A1F669ABD00AAA93B /* WDBulletListView.swift in Sources */,
 				4367E4A81F62F02E00D4176C /* WDColors.swift in Sources */,
 				4389BA801F65B7E800E3EFC2 /* WDSettingsViewController.swift in Sources */,
+				43681C201F66FE1A00BC91D6 /* WDBlackoutView.swift in Sources */,
 				43B1D6AF1F61B8B10094C96B /* WDSearchViewController.swift in Sources */,
 				43D9F9B61F644AE600B1D446 /* WDDottedLoader.swift in Sources */,
 				43BDC2151F654DF3007C01E9 /* WDWordDetailViewController.swift in Sources */,
 				4389BA821F65BC1300E3EFC2 /* WDWordListViewController.swift in Sources */,
+				43681C1E1F66F08B00BC91D6 /* WDEmptyStateView.swift in Sources */,
 				43BDC2131F653D11007C01E9 /* WordObject.swift in Sources */,
 				43BB41621F643475006B3AA3 /* WDWordSearch.swift in Sources */,
 				4389BA7C1F65ADB600E3EFC2 /* WDRoundRectButton.swift in Sources */,
@@ -281,6 +304,7 @@
 				43B1D6AD1F61B8B10094C96B /* AppDelegate.swift in Sources */,
 				43BB41601F643297006B3AA3 /* WDAPIManager.swift in Sources */,
 				4367E4A41F62ECAF00D4176C /* Constants.swift in Sources */,
+				43BA5B321F67C31300F03F66 /* WDWebViewController.swift in Sources */,
 				435AD4FC1F630453001CD10C /* WDSearchResultTableViewCell.swift in Sources */,
 				43BDC2171F6557BD007C01E9 /* WDNavigationHeader.swift in Sources */,
 			);
@@ -415,12 +439,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C3RT9P7X65;
 				INFOPLIST_FILE = Wordist/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.aamiranwar.Wordist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -432,12 +456,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C3RT9P7X65;
 				INFOPLIST_FILE = Wordist/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.aamiranwar.Wordist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

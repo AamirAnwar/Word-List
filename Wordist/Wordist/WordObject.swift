@@ -10,22 +10,36 @@ import UIKit
 
 class WordObject: NSObject {
     let word:String
-    let definition:String
+    let definitions:[String]
     override var description: String {
-        return "\(word) \(definition)"
+        return "Word:\(word) \n Definition:\(definitions)\n"
     }
-    init(word:String, definition:String) {
+    
+    required init?(coder aDecoder: NSCoder) {
+        guard let word = aDecoder.decodeObject(forKey: "word") as? String, let definition = aDecoder.decodeObject(forKey: "definition") as? [String] else {
+            return nil
+        }
         self.word = word
-        self.definition = definition
+        self.definitions = definition
+        super.init()
+    }
+    
+    init(word:String, definitions:[String]) {
+        self.word = word
+        self.definitions = definitions
         super.init()
     }
     
     init?(withDictionary responseDict:[String:Any]) {
-        guard let word = responseDict["word"] as? String, let definitions = responseDict["defs"] as? [String], let definition = definitions.first else {
+        guard let word = responseDict["word"] as? String, let definitions = responseDict["defs"] as? [String] else {
             return nil
         }
         self.word = word
-        self.definition = WordObject.getSanitizedDefinitionFrom(rawDefinition: definition)
+        var sanitizedDefinitions:[String] = []
+        for definition in definitions {
+            sanitizedDefinitions += [WordObject.getSanitizedDefinitionFrom(rawDefinition: definition)]
+        }
+        self.definitions = sanitizedDefinitions
         super.init()
     }
     
@@ -43,5 +57,12 @@ class WordObject: NSObject {
         else {
             return rawDefinition
         }
+    }
+}
+
+extension WordObject:NSCoding {
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(self.word, forKey: "word")
+        aCoder.encode(self.definitions, forKey: "definition")
     }
 }

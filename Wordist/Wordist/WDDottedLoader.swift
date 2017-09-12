@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-let numberOfDots = 3
+fileprivate let numberOfDots = 3
 let beginTimeMultiplier:Float = 0.07
 
 class WDDottedLoader:UIView {

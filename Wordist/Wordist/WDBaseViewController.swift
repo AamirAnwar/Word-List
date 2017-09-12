@@ -28,7 +28,7 @@ class WDBaseViewController: UIViewController {
         }
         
         NSLayoutConstraint.activate([
-            contentTableView.topAnchor.constraint(equalTo: headingLabel.bottomAnchor, constant: 40),
+            contentTableView.topAnchor.constraint(equalTo: headingLabel.bottomAnchor, constant: 35),
             contentTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             contentTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             contentTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant:-bottomPadding),

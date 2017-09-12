@@ -8,8 +8,17 @@
 
 import UIKit
 
-class WDRoundRectButton: UIButton {
+enum WDRoundRectButtonState {
+    case WDRoundRectButtonStateDefault, WDRoundRectButtonStateGreen
+}
 
+class WDRoundRectButton: UIButton {
+    var roundRectButtonState:WDRoundRectButtonState = .WDRoundRectButtonStateDefault {
+        didSet {
+            setProperties(forState: roundRectButtonState)
+        }
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setDefaultProperties()
@@ -31,4 +40,18 @@ class WDRoundRectButton: UIButton {
         self.setTitleColor(UIColor.white, for: .normal)
         self.layer.cornerRadius = kCornerRadius
     }
+    
+    func setProperties(forState state:WDRoundRectButtonState) {
+        switch roundRectButtonState {
+        
+        case .WDRoundRectButtonStateDefault:
+            setDefaultProperties()
+            
+        case .WDRoundRectButtonStateGreen:
+            setDefaultProperties()
+            self.backgroundColor = WDColorGreen
+        }
+    }
+        
+        
 }

@@ -9,49 +9,63 @@
 import UIKit
 let DefinitionHeadingString = "Definition"
 
+protocol WDWordDetailViewControllerDelegate {
+    func didSaveWord(wordInstance:WordObject)
+    func didRemoveWord(wordInstance:WordObject)
+}
+
 class WDWordDetailViewController: UIViewController {
     
     let wordLabel = UILabel()
     let definitionHeadingLabel = UILabel()
-    let definitionLabel = UILabel()
     fileprivate var wordObject:WordObject!
     var shouldShowAddButton = false
     let headerView = WDNavigationHeader()
     let wordLabelSeparator = WDSeparator.init(type: .WDSeparatorTypeMiddle, frame: .zero)
-    let definitionLabelSeparator = WDSeparator.init(type: .WDSeparatorTypeMiddle, frame: .zero)
     let bottomRectButton = WDRoundRectButton()
-        
+    var delegate:WDWordDetailViewControllerDelegate?
+    let bulletView:WDBulletListView = WDBulletListView()
+    
+    
     convenience init(withWord word:WordObject) {
         self.init()
         self.wordObject = word
-        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshBottomButton), name: Notification.Name(NotificationDidSaveWord), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshBottomButton), name: Notification.Name(NotificationDidRemoveWord), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshBottomButton), name: Notification.Name(NotificationDidRemoveAllWords), object: nil)
         view.backgroundColor = UIColor.white
         
         // Navigation header view
-        headerView.setBackButton(title: "Search")
+        if let backTitle = self.navigationController?.navigationBar.items?.last?.title {
+            headerView.setBackButton(title: backTitle)
+        }
+        else {
+            headerView.setBackButton(title: "")
+        }
+        
         headerView.delegate = self
         view.addSubview(headerView)
         
         
         wordLabel.text = self.wordObject.word
-        definitionLabel.text = self.wordObject.definition
+
         definitionHeadingLabel.text = DefinitionHeadingString
         
         wordLabel.numberOfLines = 0
-        definitionLabel.numberOfLines = 0
+        
         
         headerView.translatesAutoresizingMaskIntoConstraints = false
         wordLabel.translatesAutoresizingMaskIntoConstraints = false
         wordLabelSeparator.translatesAutoresizingMaskIntoConstraints = false
         definitionHeadingLabel.translatesAutoresizingMaskIntoConstraints = false
-        definitionLabel.translatesAutoresizingMaskIntoConstraints = false
-        definitionLabelSeparator.translatesAutoresizingMaskIntoConstraints = false
-        bottomRectButton.translatesAutoresizingMaskIntoConstraints = false
         
+        bottomRectButton.translatesAutoresizingMaskIntoConstraints = false
+        bulletView.translatesAutoresizingMaskIntoConstraints = false
         
         wordLabel.font = WDFontBigTitleSemiBold
         wordLabel.textColor = WDTextBlack
@@ -59,18 +73,16 @@ class WDWordDetailViewController: UIViewController {
         definitionHeadingLabel.font = WDFontSectionHeader
         definitionHeadingLabel.textColor = WDLightGray
         
-        definitionLabel.font = WDFontBodyText
-        definitionLabel.textColor = WDTextBlack
         
+        refreshBottomButton()
+        bottomRectButton.addTarget(self, action: #selector(bottomButtonTapped), for: .touchUpInside)
         
-        bottomRectButton.setTitle("Add", for: .normal)
-        
+        bulletView.setBullets(bullets: self.wordObject.definitions)
         
         view.addSubview(wordLabel)
         view.addSubview(wordLabelSeparator)
         view.addSubview(definitionHeadingLabel)
-        view.addSubview(definitionLabel)
-        view.addSubview(definitionLabelSeparator)
+        view.addSubview(bulletView)
         view.addSubview(bottomRectButton)
         // Constraints
         NSLayoutConstraint.activate([
@@ -81,7 +93,7 @@ class WDWordDetailViewController: UIViewController {
             ])
         
         NSLayoutConstraint.activate([
-            wordLabel.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 37),
+            wordLabel.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 17),
             wordLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 44),
             wordLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -kSidePadding),
             
@@ -98,19 +110,12 @@ class WDWordDetailViewController: UIViewController {
             definitionHeadingLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -kSidePadding)
             ])
         
-        
         NSLayoutConstraint.activate([
-            definitionLabel.topAnchor.constraint(equalTo: definitionHeadingLabel.bottomAnchor, constant: kDefaultPadding),
-            definitionLabel.leadingAnchor.constraint(equalTo: wordLabel.leadingAnchor),
-            definitionLabel.trailingAnchor.constraint(equalTo: wordLabel.trailingAnchor),
-            
-            
-            definitionLabelSeparator.topAnchor.constraint(equalTo: definitionLabel.bottomAnchor, constant: 5),
-            definitionLabelSeparator.leadingAnchor.constraint(equalTo: wordLabelSeparator.leadingAnchor),
-            definitionLabelSeparator.trailingAnchor.constraint(equalTo: definitionLabel.trailingAnchor),
-            definitionLabelSeparator.heightAnchor.constraint(equalToConstant: kSeparatorHeight)
+            bulletView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant:kSidePadding),
+            bulletView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant:-kSidePadding),
+            bulletView.topAnchor.constraint(equalTo: definitionHeadingLabel.bottomAnchor, constant:kDefaultPadding),
+            bulletView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
             ])
-        
         
         let tabBarHeight = self.tabBarController?.tabBar.frame.size.height
         var bottomPadding = kDefaultPadding
@@ -126,6 +131,41 @@ class WDWordDetailViewController: UIViewController {
         
         bottomRectButton.isHidden = !shouldShowAddButton
         
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        var bottomInset = (bottomRectButton.frame.size.height + 2*kDefaultPadding)
+        if let tabBarHeight = self.tabBarController?.tabBar.frame.size.height {
+            bottomInset += tabBarHeight
+        }
+        bulletView.scrollView.contentInset = UIEdgeInsetsMake(0, 0, bottomInset, 0)
+        bulletView.scrollView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, bottomInset, 0)
+    }
+    
+    @objc func refreshBottomButton() {
+        if WDWordListManager.sharedInstance.isWordSaved(word: self.wordObject).exists == true {
+            bottomRectButton.setTitle("Added", for: .normal)
+            bottomRectButton.roundRectButtonState = .WDRoundRectButtonStateGreen
+        }
+        else {
+            bottomRectButton.setTitle("Add", for: .normal)
+            bottomRectButton.roundRectButtonState = .WDRoundRectButtonStateDefault
+        }
+    }
+    
+    @objc func bottomButtonTapped() {
+        switch bottomRectButton.roundRectButtonState {
+        case .WDRoundRectButtonStateDefault:
+            WDWordListManager.sharedInstance.save(word: self.wordObject)
+            delegate?.didSaveWord(wordInstance: self.wordObject)
+            
+            
+        case .WDRoundRectButtonStateGreen:
+            WDWordListManager.sharedInstance.remove(word: self.wordObject)
+            delegate?.didRemoveWord(wordInstance: self.wordObject)
+        }
+        refreshBottomButton()
     }
 }
 
