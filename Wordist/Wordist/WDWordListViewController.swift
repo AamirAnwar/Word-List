@@ -32,6 +32,7 @@ class WDWordListViewController: WDBaseViewController {
     func createEmptyStateView() {
         emptyStateView.translatesAutoresizingMaskIntoConstraints = false
         emptyStateView.isHidden = true
+        emptyStateView.setEmptyStateMessage(message: "You don't seem to have any words saved.\n Words you add will show up here!")
         view.addSubview(emptyStateView)
         
         NSLayoutConstraint.activate([
