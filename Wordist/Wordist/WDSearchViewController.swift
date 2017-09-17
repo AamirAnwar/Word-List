@@ -104,7 +104,6 @@ class WDSearchViewController: UIViewController {
             
             UIView.animate(withDuration: 0.2) {
                 self.searchTextField.frame = CGRect(x: kSidePadding, y: searchFieldOriginY, width: self.view.frame.size.width - 2*kSidePadding, height: self.searchTextField.frame.height)
-                self.searchTableView.alpha = 0.0
             }
         }
         else {
@@ -117,12 +116,6 @@ class WDSearchViewController: UIViewController {
                 self.searchTableView.frame = CGRect(x: 0, y: tableY, width: self.view.frame.width , height: self.view.frame.height - tableY - bottomPadding)
                 
             })
-        }
-    }
-    
-    @objc func didTapSearchBackground() {
-        if searchTextField.isFirstResponder && searchTextField.text?.isEmpty == true {
-            searchTextField.resignFirstResponder()
         }
     }
     
