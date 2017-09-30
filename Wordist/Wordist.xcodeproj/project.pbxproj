@@ -85,10 +85,10 @@
 		4392989E1F7250C100A77BFC /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				4389BA7D1F65B4EB00E3EFC2 /* WDBaseViewController.swift */,
 				43BA5B311F67C31300F03F66 /* WDWebViewController.swift */,
 				43B1D6AE1F61B8B10094C96B /* WDSearchViewController.swift */,
 				43BDC2141F654DF3007C01E9 /* WDWordDetailViewController.swift */,
-				4389BA7D1F65B4EB00E3EFC2 /* WDBaseViewController.swift */,
 				4389BA7F1F65B7E800E3EFC2 /* WDSettingsViewController.swift */,
 				4389BA811F65BC1300E3EFC2 /* WDWordListViewController.swift */,
 			);
@@ -159,19 +159,27 @@
 		43B1D6AB1F61B8B10094C96B /* Wordist */ = {
 			isa = PBXGroup;
 			children = (
-				43B1D6AC1F61B8B10094C96B /* AppDelegate.swift */,
 				439298A01F72510800A77BFC /* Views */,
 				4392989E1F7250C100A77BFC /* ViewControllers */,
-				43BA5B331F67C53200F03F66 /* licences.html */,
 				439298A11F72512300A77BFC /* Models */,
 				439298A21F72513B00A77BFC /* Singletons */,
 				43B1D6B31F61B8B10094C96B /* Assets.xcassets */,
-				43BDC2181F6558AD007C01E9 /* ionicons.ttf */,
-				43B1D6B51F61B8B10094C96B /* LaunchScreen.storyboard */,
-				43B1D6B81F61B8B10094C96B /* Info.plist */,
+				43F5E5BF1F7F860800817407 /* Supporting Files */,
 				4392989F1F7250D900A77BFC /* Commons */,
 			);
 			path = Wordist;
+			sourceTree = "<group>";
+		};
+		43F5E5BF1F7F860800817407 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				43B1D6AC1F61B8B10094C96B /* AppDelegate.swift */,
+				43BA5B331F67C53200F03F66 /* licences.html */,
+				43B1D6B51F61B8B10094C96B /* LaunchScreen.storyboard */,
+				43BDC2181F6558AD007C01E9 /* ionicons.ttf */,
+				43B1D6B81F61B8B10094C96B /* Info.plist */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		6CCDA07673FA0CC1757C18B9 /* Frameworks */ = {
