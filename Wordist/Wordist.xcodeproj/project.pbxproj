@@ -85,10 +85,10 @@
 		4392989E1F7250C100A77BFC /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				4389BA7D1F65B4EB00E3EFC2 /* WDBaseViewController.swift */,
 				43BA5B311F67C31300F03F66 /* WDWebViewController.swift */,
 				43B1D6AE1F61B8B10094C96B /* WDSearchViewController.swift */,
 				43BDC2141F654DF3007C01E9 /* WDWordDetailViewController.swift */,
-				4389BA7D1F65B4EB00E3EFC2 /* WDBaseViewController.swift */,
 				4389BA7F1F65B7E800E3EFC2 /* WDSettingsViewController.swift */,
 				4389BA811F65BC1300E3EFC2 /* WDWordListViewController.swift */,
 			);

@@ -9,7 +9,7 @@
 import UIKit
 
 let kTextFieldHeight:CGFloat = 55
-let kSearchResultReuseIdentifer = "kSearchResultCell"
+let kSearchResultReuseIdentifer = "SearchResultCell"
 let kDottedLoaderWidth:CGFloat = 52
 let kDottedLoaderHeight:CGFloat = 16
 let tableY = kStatusBarHeight + kTextFieldHeight + 3*kDefaultPadding
@@ -23,7 +23,7 @@ class WDSearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "Search"
+        self.navigationItem.title = kSearchNavigationTitle
         registerForNotifications()
         createSearchTextField()
         createTableView()

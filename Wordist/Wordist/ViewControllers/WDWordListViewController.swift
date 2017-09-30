@@ -20,8 +20,8 @@ class WDWordListViewController: WDBaseViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(refreshTableView), name: Notification.Name(NotificationDidRemoveWord), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(refreshTableView), name: Notification.Name(NotificationDidRemoveAllWords), object: nil)
         
-        self.headingLabel.text = "List"
-        self.navigationItem.title = "List"
+        self.headingLabel.text = kListNavigationTitle
+        self.navigationItem.title = self.headingLabel.text
         self.contentTableView.delegate = self
         self.contentTableView.dataSource = self
         self.contentTableView.rowHeight = 78

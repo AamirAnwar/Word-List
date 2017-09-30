@@ -7,7 +7,6 @@
 //
 
 import UIKit
-let DefinitionHeadingString = "Definition"
 
 protocol WDWordDetailViewControllerDelegate {
     func didSaveWord(wordInstance:WordObject)
