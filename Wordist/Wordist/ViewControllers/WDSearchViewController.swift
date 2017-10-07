@@ -124,6 +124,8 @@ class WDSearchViewController: UIViewController {
     }
     
     @objc func willShowKeyboard(notification:NSNotification) {
+        guard self.isCurrentActiveTabController() else {return}
+        
         if let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardHeight = keyboardFrame.cgRectValue.height
             transitionToSearchState(keyboardHeight: keyboardHeight)
@@ -132,6 +134,7 @@ class WDSearchViewController: UIViewController {
     }
     
     @objc func willHideKeyboard() {
+        guard self.isCurrentActiveTabController() else {return}
             transitionToDefaultState()
     }
     
