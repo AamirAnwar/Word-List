@@ -43,6 +43,7 @@ class WDBulletListView: UIView {
     
     func createScrollView() {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
+//        scrollView.backgroundColor = UIColor.green
         self.addSubview(scrollView)
         
         NSLayoutConstraint.activate([
@@ -55,6 +56,7 @@ class WDBulletListView: UIView {
     
     func createContainerView() {
         containerView.translatesAutoresizingMaskIntoConstraints = false
+//        containerView.backgroundColor = UIColor.red
         scrollView.addSubview(containerView)
         
         NSLayoutConstraint.activate([
