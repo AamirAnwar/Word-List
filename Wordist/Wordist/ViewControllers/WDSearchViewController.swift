@@ -33,8 +33,12 @@ class WDSearchViewController: UIViewController {
     func registerForNotifications() {
         NotificationCenter.default.addObserver(self, selector:#selector(willShowKeyboard(notification:)) , name: Notification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector:#selector(willHideKeyboard) , name: Notification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshTableView), name: Notification.Name(NotificationDidSaveWord), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshTableView), name: Notification.Name(NotificationDidRemoveWord), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshTableView), name: Notification.Name(NotificationDidRemoveAllWords), object: nil)
+        
     }
-    
+
     fileprivate func createTableView() {
         searchTableView.delegate = self
         searchTableView.dataSource = self
@@ -154,6 +158,11 @@ class WDSearchViewController: UIViewController {
         }
     }
     
+    @objc func refreshTableView() {
+        searchTableView.reloadData()
+    }
+    
+    
 }
 
 extension WDSearchViewController:UITextFieldDelegate {
@@ -186,7 +195,12 @@ extension WDSearchViewController:UITableViewDataSource,UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: kSearchResultReuseIdentifer)!
         
         if let cell = cell as? WDSearchResultTableViewCell {
-            cell.setTitle(wordSearchObject.searchResults[indexPath.row].word)
+            if WDWordListManager.sharedInstance.isWordSaved(word: wordSearchObject.searchResults[indexPath.row]).exists == true {
+                cell.setTitle(wordSearchObject.searchResults[indexPath.row].word, tag: .Added)
+            }
+            else {
+                cell.setTitle(wordSearchObject.searchResults[indexPath.row].word)
+            }
         }
         return cell
     }
