@@ -51,12 +51,12 @@
 		4389BA7D1F65B4EB00E3EFC2 /* WDBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDBaseViewController.swift; sourceTree = "<group>"; };
 		4389BA7F1F65B7E800E3EFC2 /* WDSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDSettingsViewController.swift; sourceTree = "<group>"; };
 		4389BA811F65BC1300E3EFC2 /* WDWordListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDWordListViewController.swift; sourceTree = "<group>"; };
+		43A597A91F88CF700088B7DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Wordist/Info.plist; sourceTree = SOURCE_ROOT; };
 		43B1D6A91F61B8B10094C96B /* Wordist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wordist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43B1D6AC1F61B8B10094C96B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		43B1D6AE1F61B8B10094C96B /* WDSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDSearchViewController.swift; sourceTree = "<group>"; };
 		43B1D6B31F61B8B10094C96B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		43B1D6B61F61B8B10094C96B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		43B1D6B81F61B8B10094C96B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		43BA5B311F67C31300F03F66 /* WDWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDWebViewController.swift; sourceTree = "<group>"; };
 		43BA5B331F67C53200F03F66 /* licences.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = licences.html; sourceTree = "<group>"; };
 		43BB415F1F643297006B3AA3 /* WDAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDAPIManager.swift; sourceTree = "<group>"; };
@@ -164,6 +164,7 @@
 				439298A11F72512300A77BFC /* Models */,
 				439298A21F72513B00A77BFC /* Singletons */,
 				43B1D6B31F61B8B10094C96B /* Assets.xcassets */,
+				43A597A91F88CF700088B7DC /* Info.plist */,
 				43F5E5BF1F7F860800817407 /* Supporting Files */,
 				4392989F1F7250D900A77BFC /* Commons */,
 			);
@@ -177,7 +178,6 @@
 				43BA5B331F67C53200F03F66 /* licences.html */,
 				43B1D6B51F61B8B10094C96B /* LaunchScreen.storyboard */,
 				43BDC2181F6558AD007C01E9 /* ionicons.ttf */,
-				43B1D6B81F61B8B10094C96B /* Info.plist */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
