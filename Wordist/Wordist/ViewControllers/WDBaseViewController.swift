@@ -11,6 +11,8 @@ import UIKit
 class WDBaseViewController: UIViewController {
     let headingLabel = UILabel()
     let contentTableView = UITableView(frame: .zero, style: .plain)
+    var contentTableViewTopConstraint:NSLayoutConstraint!
+    var contentTableViewBottomConstraint:NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
         createHeadingLabel()
@@ -27,11 +29,13 @@ class WDBaseViewController: UIViewController {
             bottomPadding += tabBarHeight
         }
         
+        contentTableViewTopConstraint = contentTableView.topAnchor.constraint(equalTo: headingLabel.bottomAnchor, constant: 35)
+        contentTableViewBottomConstraint = contentTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant:-bottomPadding)
         NSLayoutConstraint.activate([
-            contentTableView.topAnchor.constraint(equalTo: headingLabel.bottomAnchor, constant: 35),
+            contentTableViewTopConstraint,
             contentTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             contentTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            contentTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant:-bottomPadding),
+            contentTableViewBottomConstraint
             ])
     }
     
@@ -46,6 +50,8 @@ class WDBaseViewController: UIViewController {
         contentTableView.tableFooterView = UIView()
         view.addSubview(contentTableView)
     }
+    
+    
 
 
 
