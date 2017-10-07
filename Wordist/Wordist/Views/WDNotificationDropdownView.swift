@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+fileprivate let kDropdownAnimationDuration = 0.2
 class WDNotificationDropdownView: UIView {
     let messageLabel = UILabel()
     var panGesture:UIPanGestureRecognizer!
@@ -71,7 +71,7 @@ class WDNotificationDropdownView: UIView {
         dropdown.transform = CGAffineTransform(translationX: 0, y: -dropdown.frame.height)
         window.addSubview(dropdown)
         
-        UIView.animate(withDuration: 0.3, animations: {
+        UIView.animate(withDuration: kDropdownAnimationDuration, animations: {
             dropdown.transform = .identity
         }) { (_) in
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.5, execute: {
@@ -88,7 +88,7 @@ class WDNotificationDropdownView: UIView {
         }
         dropdown.panGesture.isEnabled = false
         appDelegate.dropdown = nil
-        UIView.animate(withDuration: 0.3, animations: {
+        UIView.animate(withDuration: kDropdownAnimationDuration, animations: {
             dropdown.transform = CGAffineTransform(translationX: 0, y: -dropdown.frame.height)
         }) { (_) in
             dropdown.removeFromSuperview()
