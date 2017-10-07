@@ -17,8 +17,8 @@ protocol WDAPIManagerDelegate {
 class WDAPIManager {
     static let sharedInstance = WDAPIManager()
     func getRequestWith(url:URLConvertible, params:[String:Any]?, delegate:WDAPIManagerDelegate) -> DataRequest {
-        print(url)
-        print(params ?? "")
+//        print(url)
+//        print(params ?? "")
         return Alamofire.request(url, method: .get, parameters: params, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
             
             var updatedParams:[String:Any]? = [:]
@@ -34,9 +34,9 @@ class WDAPIManager {
             
             guard response.result.isSuccess else {
                 delegate.didFail(withParams:params)
-                if let request = response.request {
-                    print("Request Failed \(request)")
-                }
+//                if let request = response.request {
+//                    print("Request Failed \(request)")
+//                }
                 return
             }
             // Handle array of dictionaries

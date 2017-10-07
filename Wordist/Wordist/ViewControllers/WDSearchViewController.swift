@@ -33,8 +33,12 @@ class WDSearchViewController: UIViewController {
     func registerForNotifications() {
         NotificationCenter.default.addObserver(self, selector:#selector(willShowKeyboard(notification:)) , name: Notification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector:#selector(willHideKeyboard) , name: Notification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshTableView), name: Notification.Name(NotificationDidSaveWord), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshTableView), name: Notification.Name(NotificationDidRemoveWord), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshTableView), name: Notification.Name(NotificationDidRemoveAllWords), object: nil)
+        
     }
-    
+
     fileprivate func createTableView() {
         searchTableView.delegate = self
         searchTableView.dataSource = self
@@ -120,6 +124,8 @@ class WDSearchViewController: UIViewController {
     }
     
     @objc func willShowKeyboard(notification:NSNotification) {
+        guard self.isCurrentActiveTabController() else {return}
+        
         if let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardHeight = keyboardFrame.cgRectValue.height
             transitionToSearchState(keyboardHeight: keyboardHeight)
@@ -128,6 +134,7 @@ class WDSearchViewController: UIViewController {
     }
     
     @objc func willHideKeyboard() {
+        guard self.isCurrentActiveTabController() else {return}
             transitionToDefaultState()
     }
     
@@ -153,6 +160,11 @@ class WDSearchViewController: UIViewController {
             self.dottedLoader.alpha = 0
         }
     }
+    
+    @objc func refreshTableView() {
+        searchTableView.reloadData()
+    }
+    
     
 }
 
@@ -186,7 +198,12 @@ extension WDSearchViewController:UITableViewDataSource,UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: kSearchResultReuseIdentifer)!
         
         if let cell = cell as? WDSearchResultTableViewCell {
-            cell.setTitle(wordSearchObject.searchResults[indexPath.row].word)
+            if WDWordListManager.sharedInstance.isWordSaved(word: wordSearchObject.searchResults[indexPath.row]).exists == true {
+                cell.setTitle(wordSearchObject.searchResults[indexPath.row].word, tag: .Added)
+            }
+            else {
+                cell.setTitle(wordSearchObject.searchResults[indexPath.row].word)
+            }
         }
         return cell
     }
@@ -199,7 +216,6 @@ extension WDSearchViewController:UITableViewDataSource,UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: false)
         view.endEditing(true)
         let wordDetailVC = WDWordDetailViewController.init(withWord: wordSearchObject.searchResults[indexPath.row])
-        wordDetailVC.shouldShowAddButton = true
         self.navigationController?.pushViewController(wordDetailVC, animated: true)
     }
 }
@@ -211,6 +227,7 @@ extension WDSearchViewController:WordSearchDelegate {
     }
     
     func didFailToSearch(query: String) {
+        WDHelpers.showInternetErrorDropdown()
         searchTableView.reloadData()
         hideDottedLoader()
     }
