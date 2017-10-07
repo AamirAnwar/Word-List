@@ -18,7 +18,6 @@ class WDWordDetailViewController: UIViewController {
     let wordLabel = UILabel()
     let definitionHeadingLabel = UILabel()
     fileprivate var wordObject:WordObject!
-    var shouldShowAddButton = false
     let headerView = WDNavigationHeader()
     let wordLabelSeparator = WDSeparator.init(type: .WDSeparatorTypeMiddle, frame: .zero)
     let bottomRectButton = WDRoundRectButton()
@@ -127,18 +126,12 @@ class WDWordDetailViewController: UIViewController {
             bottomRectButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -kSidePadding),
             bottomRectButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -(bottomPadding) )
             ])
-        
-        bottomRectButton.isHidden = !shouldShowAddButton
-        
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         let bottomInset = (bottomRectButton.frame.size.height + 2*kDefaultPadding)
-//        if let tabBarHeight = self.tabBarController?.tabBar.frame.size.height {
-//            bottomInset += tabBarHeight
-//        }
-        bulletView.scrollView.contentInset = UIEdgeInsetsMake(0, 0, bottomInset, 0)
+        bulletView.scrollView.contentSize = CGSize(width: bulletView.containerView.frame.width, height: bulletView.containerView.frame.height + bottomInset)
         bulletView.scrollView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, bottomInset, 0)
     }
     

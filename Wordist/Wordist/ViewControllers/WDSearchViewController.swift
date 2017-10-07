@@ -213,7 +213,6 @@ extension WDSearchViewController:UITableViewDataSource,UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: false)
         view.endEditing(true)
         let wordDetailVC = WDWordDetailViewController.init(withWord: wordSearchObject.searchResults[indexPath.row])
-        wordDetailVC.shouldShowAddButton = true
         self.navigationController?.pushViewController(wordDetailVC, animated: true)
     }
 }

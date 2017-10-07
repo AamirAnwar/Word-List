@@ -75,7 +75,6 @@ extension WDWordListViewController:UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
         let wordDetailVC = WDWordDetailViewController.init(withWord: tableData[indexPath.row])
-        wordDetailVC.shouldShowAddButton = true
         wordDetailVC.delegate = self
         self.navigationController?.pushViewController(wordDetailVC, animated: true)
     }
