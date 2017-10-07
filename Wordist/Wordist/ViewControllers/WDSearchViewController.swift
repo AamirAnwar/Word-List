@@ -225,6 +225,7 @@ extension WDSearchViewController:WordSearchDelegate {
     }
     
     func didFailToSearch(query: String) {
+        WDHelpers.showInternetErrorDropdown()
         searchTableView.reloadData()
         hideDottedLoader()
     }

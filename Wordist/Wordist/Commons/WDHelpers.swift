@@ -15,6 +15,10 @@ enum WDHelpers {
         return paths[0]
     }
     
+    static func showInternetErrorDropdown() {
+        WDNotificationDropdownView.showWith(message: "There seems to be a problem with the internet :(")
+    }
+    
 }
 
 extension String {
