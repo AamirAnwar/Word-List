@@ -28,8 +28,8 @@ class WDWordListViewController: WDBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         registerForNotifications()
-        createEmptyStateView()
         createSearchBar()
+        createEmptyStateView()
         
         self.headingLabel.text = kListNavigationTitle
         self.navigationItem.title = self.headingLabel.text
@@ -42,6 +42,7 @@ class WDWordListViewController: WDBaseViewController {
     
     func createSearchBar() {
         view.addSubview(searchBar)
+        searchBar.enablesReturnKeyAutomatically = false
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         searchBar.searchBarStyle = .prominent
         searchBar.placeholder = "Search"
@@ -121,15 +122,15 @@ extension WDWordListViewController:UISearchBarDelegate {
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        UIView.transition(with: searchBar, duration: 0.2, options: [.transitionCrossDissolve], animations: {
-            searchBar.showsCancelButton = true
-        }, completion: nil)
+//        UIView.transition(with: searchBar, duration: 0.2, options: [.transitionCrossDissolve], animations: {
+//            searchBar.showsCancelButton = true
+//        }, completion: nil)
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        UIView.transition(with: searchBar, duration: 0.2, options: [.transitionCrossDissolve], animations: {
-            searchBar.showsCancelButton = false
-        }, completion: nil)
+//        UIView.transition(with: searchBar, duration: 0.2, options: [.transitionCrossDissolve], animations: {
+//            searchBar.showsCancelButton = false
+//        }, completion: nil)
         
     }
     
