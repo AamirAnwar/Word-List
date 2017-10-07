@@ -55,9 +55,6 @@ class WDNotificationDropdownView: UIView {
         default:
             WDNotificationDropdownView.hide(dropdown: self)
         }
-        
-        print(gesture.translation(in: self.superview))
-        
     }
     
     static func showWith(message:String) {
