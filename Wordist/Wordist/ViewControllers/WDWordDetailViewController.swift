@@ -134,10 +134,10 @@ class WDWordDetailViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        var bottomInset = (bottomRectButton.frame.size.height + 2*kDefaultPadding)
-        if let tabBarHeight = self.tabBarController?.tabBar.frame.size.height {
-            bottomInset += tabBarHeight
-        }
+        let bottomInset = (bottomRectButton.frame.size.height + 2*kDefaultPadding)
+//        if let tabBarHeight = self.tabBarController?.tabBar.frame.size.height {
+//            bottomInset += tabBarHeight
+//        }
         bulletView.scrollView.contentInset = UIEdgeInsetsMake(0, 0, bottomInset, 0)
         bulletView.scrollView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, bottomInset, 0)
     }
