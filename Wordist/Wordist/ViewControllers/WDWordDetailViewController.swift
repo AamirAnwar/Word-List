@@ -112,7 +112,7 @@ class WDWordDetailViewController: UIViewController {
             bulletView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant:kSidePadding),
             bulletView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant:-kSidePadding),
             bulletView.topAnchor.constraint(equalTo: definitionHeadingLabel.bottomAnchor, constant:kDefaultPadding),
-            bulletView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            bulletView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant:-WDHelpers.tabBarHeight)
             ])
         
         let tabBarHeight = self.tabBarController?.tabBar.frame.size.height
