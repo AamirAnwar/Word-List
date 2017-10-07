@@ -183,7 +183,6 @@ class WDBulletListView: UIView {
         let distance =  Double((nextDot.center.y - dot.center.y))
         let animSpeed:Double = 1000
         let animDuration:Double = distance/(animSpeed)
-        print("Animation duration - \(animDuration)")
         line.bottomAnchor.constraint(equalTo: nextDot.centerYAnchor).isActive = true
         UIView.animate(withDuration: animDuration, animations: {
             self.layoutIfNeeded()
