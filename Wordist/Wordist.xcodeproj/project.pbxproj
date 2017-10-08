@@ -21,6 +21,7 @@
 		4389BA7E1F65B4EB00E3EFC2 /* WDBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4389BA7D1F65B4EB00E3EFC2 /* WDBaseViewController.swift */; };
 		4389BA801F65B7E800E3EFC2 /* WDSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4389BA7F1F65B7E800E3EFC2 /* WDSettingsViewController.swift */; };
 		4389BA821F65BC1300E3EFC2 /* WDWordListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4389BA811F65BC1300E3EFC2 /* WDWordListViewController.swift */; };
+		439D2E9A1F8A3BA6001FD154 /* WDAnimationFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439D2E991F8A3BA6001FD154 /* WDAnimationFactory.swift */; };
 		43A597AB1F88D4DE0088B7DC /* WDSearchTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A597AA1F88D4DE0088B7DC /* WDSearchTag.swift */; };
 		43A597AD1F88E61E0088B7DC /* WDNotificationDropdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A597AC1F88E61E0088B7DC /* WDNotificationDropdownView.swift */; };
 		43B1D6AD1F61B8B10094C96B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B1D6AC1F61B8B10094C96B /* AppDelegate.swift */; };
@@ -53,6 +54,7 @@
 		4389BA7D1F65B4EB00E3EFC2 /* WDBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDBaseViewController.swift; sourceTree = "<group>"; };
 		4389BA7F1F65B7E800E3EFC2 /* WDSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDSettingsViewController.swift; sourceTree = "<group>"; };
 		4389BA811F65BC1300E3EFC2 /* WDWordListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDWordListViewController.swift; sourceTree = "<group>"; };
+		439D2E991F8A3BA6001FD154 /* WDAnimationFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WDAnimationFactory.swift; path = "/Users/Hazmat/Documents/iOSProjects/Word-List/Wordist/Wordist/Models/WDAnimationFactory.swift"; sourceTree = "<absolute>"; };
 		43A597A91F88CF700088B7DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Wordist/Info.plist; sourceTree = SOURCE_ROOT; };
 		43A597AA1F88D4DE0088B7DC /* WDSearchTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDSearchTag.swift; sourceTree = "<group>"; };
 		43A597AC1F88E61E0088B7DC /* WDNotificationDropdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDNotificationDropdownView.swift; sourceTree = "<group>"; };
@@ -128,6 +130,8 @@
 		439298A11F72512300A77BFC /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				439D2E991F8A3BA6001FD154 /* WDAnimationFactory.swift */,
+				43A597AA1F88D4DE0088B7DC /* WDSearchTag.swift */,
 				43BB41611F643475006B3AA3 /* WDWordSearch.swift */,
 				43BDC2121F653D11007C01E9 /* WordObject.swift */,
 			);
@@ -164,7 +168,6 @@
 		43B1D6AB1F61B8B10094C96B /* Wordist */ = {
 			isa = PBXGroup;
 			children = (
-				43A597AA1F88D4DE0088B7DC /* WDSearchTag.swift */,
 				439298A01F72510800A77BFC /* Views */,
 				4392989E1F7250C100A77BFC /* ViewControllers */,
 				439298A11F72512300A77BFC /* Models */,
@@ -350,6 +353,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4389BA7A1F65AA5D00E3EFC2 /* WDHelpers.swift in Sources */,
+				439D2E9A1F8A3BA6001FD154 /* WDAnimationFactory.swift in Sources */,
 				435AD4FE1F630B7F001CD10C /* WDSeparator.swift in Sources */,
 				431AE4581F6666DB00AAA93B /* WDWordListManager.swift in Sources */,
 				431AE45A1F669ABD00AAA93B /* WDBulletListView.swift in Sources */,
