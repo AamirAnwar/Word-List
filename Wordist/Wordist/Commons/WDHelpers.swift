@@ -29,6 +29,9 @@ enum WDHelpers {
         WDNotificationDropdownView.showWith(message: "There seems to be a problem with the internet :(")
     }
     
+    static func isFirstLaunch() -> Bool {
+        return UserDefaults.standard.integer(forKey: kIsFirstLaunchKey) == 1
+    }
 }
 
 extension UIViewController {
