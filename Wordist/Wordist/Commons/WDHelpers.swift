@@ -26,7 +26,7 @@ enum WDHelpers {
     }
     
     static func showInternetErrorDropdown() {
-        WDNotificationDropdownView.showWith(message: "There seems to be a problem with the internet :(")
+        WDNotificationDropdownView.showWith(message: "Something seems to have gone wrong :(")
     }
     
     static func isFirstLaunch() -> Bool {
