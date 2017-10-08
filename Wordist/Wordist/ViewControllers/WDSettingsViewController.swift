@@ -7,6 +7,7 @@
 //
 
 import UIKit
+
 let SettingsCellReuseIdentifier = "SettingsCellReuseIdentifier"
 class WDSettingsViewController: WDBaseViewController {
     var tableData = [String]()
@@ -17,8 +18,8 @@ class WDSettingsViewController: WDBaseViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(createTableData), name: Notification.Name(NotificationDidRemoveWord), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(createTableData), name: Notification.Name(NotificationDidRemoveAllWords), object: nil)
         
-        self.navigationItem.title = "Settings"
-        self.headingLabel.text = "Settings"
+        self.navigationItem.title = kSettingsNavigationTitle
+        self.headingLabel.text = self.navigationItem.title
         self.contentTableView.delegate = self
         self.contentTableView.dataSource = self
         self.contentTableView.rowHeight = 78

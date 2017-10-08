@@ -9,32 +9,45 @@
 import UIKit
 
 let kTextFieldHeight:CGFloat = 55
-let kSearchResultReuseIdentifer = "kSearchResultCell"
+let kSearchResultReuseIdentifer = "SearchResultCell"
 let kDottedLoaderWidth:CGFloat = 52
 let kDottedLoaderHeight:CGFloat = 16
 let tableY = kStatusBarHeight + kTextFieldHeight + 3*kDefaultPadding
+fileprivate let kFirstRunHoverAnimationKey = "WDFirstRunTranslationAnimation"
 
 class WDSearchViewController: UIViewController {
     let searchTextField = UITextField()
+    var firstRunLabel:UILabel?
     let textFieldSeparator = WDSeparator.init(type: .WDSeparatorTypeMiddle, frame: .zero)
     let searchTableView = UITableView.init(frame: .zero, style: .plain)
     let wordSearchObject = WordSearch()
     let dottedLoader = WDDottedLoader(frame: CGRect(x: 0, y: 0, width: kDottedLoaderWidth, height: kDottedLoaderHeight))
+    var firstRunHoverAnimation:CABasicAnimation?
+    var didShowHoverFirstRun = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "Search"
+        self.navigationItem.title = kSearchNavigationTitle
         registerForNotifications()
         createSearchTextField()
         createTableView()
         createDottedLoader()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        showSearchFirstRun()
+    }
+    
     func registerForNotifications() {
         NotificationCenter.default.addObserver(self, selector:#selector(willShowKeyboard(notification:)) , name: Notification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector:#selector(willHideKeyboard) , name: Notification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshTableView), name: Notification.Name(NotificationDidSaveWord), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshTableView), name: Notification.Name(NotificationDidRemoveWord), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshTableView), name: Notification.Name(NotificationDidRemoveAllWords), object: nil)
+        
     }
-    
+
     fileprivate func createTableView() {
         searchTableView.delegate = self
         searchTableView.dataSource = self
@@ -82,7 +95,7 @@ class WDSearchViewController: UIViewController {
         if self.searchTableView.alpha == 0 {
             searchTableView.contentOffset = CGPoint(x: 0, y: -searchTableView.contentInset.top)
         }
-        
+        hideFirstRun()
         UIView.animate(withDuration: 0.17, animations: {
             self.searchTextField.frame = CGRect(x: self.searchTextField.frame.origin.x, y: kStatusBarHeight + kDefaultPadding, width: (self.view.frame.size.width - 2*kSidePadding) - 2*kDefaultPadding - kDottedLoaderWidth, height: self.searchTextField.frame.height)
             self.dottedLoader.frame = CGRect(x: self.searchTextField.frame.origin.x + self.searchTextField.frame.width + kDefaultPadding, y: self.searchTextField.frame.origin.y + self.searchTextField.frame.height/2 - kDottedLoaderHeight/2, width: kDottedLoaderWidth, height: kDottedLoaderHeight)
@@ -120,6 +133,8 @@ class WDSearchViewController: UIViewController {
     }
     
     @objc func willShowKeyboard(notification:NSNotification) {
+        guard self.isCurrentActiveTabController() else {return}
+        
         if let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardHeight = keyboardFrame.cgRectValue.height
             transitionToSearchState(keyboardHeight: keyboardHeight)
@@ -128,6 +143,7 @@ class WDSearchViewController: UIViewController {
     }
     
     @objc func willHideKeyboard() {
+        guard self.isCurrentActiveTabController() else {return}
             transitionToDefaultState()
     }
     
@@ -154,6 +170,79 @@ class WDSearchViewController: UIViewController {
         }
     }
     
+    @objc func refreshTableView() {
+        searchTableView.reloadData()
+    }
+    // MARK: First run
+    func showSearchFirstRun() {
+        if let label = firstRunLabel, let hoverAnim = self.firstRunHoverAnimation {
+            label.layer.removeAnimation(forKey: kFirstRunHoverAnimationKey)
+            label.layer.add(hoverAnim, forKey: kFirstRunHoverAnimationKey)
+        }
+        else {
+            guard WDHelpers.isFirstLaunch() && didShowHoverFirstRun == false else {return}
+            didShowHoverFirstRun = true
+            let label = UILabel()
+            label.backgroundColor = UIColor.white
+            var fontIconString:String?
+            do {
+                try fontIconString = "&#xf126;".convertHtmlSymbols()
+                if let fontIconString = fontIconString {
+                    let attributedTitle = NSMutableAttributedString.init(string: fontIconString,
+                                                                         attributes: [NSAttributedStringKey.font:WDFonts.iconFontWith(size: 14),
+                                                                                      NSAttributedStringKey.foregroundColor:WDTextBlack,
+                                                                                      NSAttributedStringKey.baselineOffset:-1])
+                    attributedTitle.append(NSMutableAttributedString.init(string: " \(kSearchFirstRunMessage)", attributes:[NSAttributedStringKey.font:WDFontBannerMedium,NSAttributedStringKey.foregroundColor:WDTextBlack]))
+                    label.attributedText = attributedTitle
+                }
+                
+            }
+            catch {
+                label.text = kSearchFirstRunMessage
+                label.font = WDFontBannerMedium
+                label.textColor = WDTextBlack
+                print("Fatal error in loading icon fonts")
+            }
+            
+            label.sizeToFit()
+            view.addSubview(label)
+            firstRunLabel = label
+            label.frame.origin = CGPoint(x: self.searchTextField.frame.origin.x, y: self.searchTextField.frame.maxY + kDefaultPadding)
+            let alphaAnimation = WDAnimationFactory.alphaAnimation()
+            alphaAnimation.beginTime = CACurrentMediaTime() + 0.5
+            alphaAnimation.setValue(label.layer, forKey: "layer")
+            alphaAnimation.delegate = self
+            label.layer.add(alphaAnimation, forKey: nil)
+            firstRunLabel = label
+            
+        }
+    }
+    
+    func hideFirstRun() {
+        guard WDHelpers.isFirstLaunch() && didShowHoverFirstRun == true else {return}
+        
+        if let label = firstRunLabel {
+            if label.layer.animation(forKey: kFirstRunHoverAnimationKey) != nil {
+                label.layer.removeAnimation(forKey: kFirstRunHoverAnimationKey)
+            }
+            UIView.animate(withDuration: 0.08, animations: {
+                label.alpha = 0.0
+            }, completion: { (_) in
+                label.removeFromSuperview()
+                self.firstRunLabel = nil
+            })
+        }
+    }
+}
+
+extension WDSearchViewController:CAAnimationDelegate {
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        guard let layer = anim.value(forKey: "layer") as? CALayer else {return}
+        let hoverAnim = WDAnimationFactory.hoverAnimationWith(layer: layer)
+        layer.add(hoverAnim, forKey: kFirstRunHoverAnimationKey)
+        self.firstRunHoverAnimation = hoverAnim
+        anim.setValue(nil, forKey: "layer")
+    }
 }
 
 extension WDSearchViewController:UITextFieldDelegate {
@@ -186,7 +275,12 @@ extension WDSearchViewController:UITableViewDataSource,UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: kSearchResultReuseIdentifer)!
         
         if let cell = cell as? WDSearchResultTableViewCell {
-            cell.setTitle(wordSearchObject.searchResults[indexPath.row].word)
+            if WDWordListManager.sharedInstance.isWordSaved(word: wordSearchObject.searchResults[indexPath.row]).exists == true {
+                cell.setTitle(wordSearchObject.searchResults[indexPath.row].word, tag: .Added)
+            }
+            else {
+                cell.setTitle(wordSearchObject.searchResults[indexPath.row].word)
+            }
         }
         return cell
     }
@@ -199,7 +293,6 @@ extension WDSearchViewController:UITableViewDataSource,UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: false)
         view.endEditing(true)
         let wordDetailVC = WDWordDetailViewController.init(withWord: wordSearchObject.searchResults[indexPath.row])
-        wordDetailVC.shouldShowAddButton = true
         self.navigationController?.pushViewController(wordDetailVC, animated: true)
     }
 }
@@ -211,6 +304,7 @@ extension WDSearchViewController:WordSearchDelegate {
     }
     
     func didFailToSearch(query: String) {
+        WDHelpers.showInternetErrorDropdown()
         searchTableView.reloadData()
         hideDottedLoader()
     }

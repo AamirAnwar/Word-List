@@ -14,7 +14,7 @@ let beginTimeMultiplier:Float = 0.07
 class WDDottedLoader:UIView {
     var dots:[UIView] = []
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        fatalError("initWithCoder not implemented!")
     }
     
     override init(frame: CGRect) {
@@ -44,8 +44,6 @@ class WDDottedLoader:UIView {
         
         let timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         let animation = CAKeyframeAnimation(keyPath: "transform.translation.y")
-        
-        
         animation.keyTimes = [0, 0.33, 0.66 , 1]
         animation.timingFunctions = [timingFunction,timingFunction,timingFunction]
         let dotSize = dot.frame.height
@@ -53,8 +51,6 @@ class WDDottedLoader:UIView {
         animation.duration = 0.6
         animation.repeatCount = MAXFLOAT
         animation.isRemovedOnCompletion = false
-        
-        
         for (i,dot) in dots.enumerated() {
             animation.beginTime = beginTime + CFTimeInterval.init(Float(i+1)*beginTimeMultiplier)
             dot.layer.add(animation, forKey: "animation")

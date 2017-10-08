@@ -43,6 +43,7 @@ class WDBulletListView: UIView {
     
     func createScrollView() {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
+//        scrollView.backgroundColor = UIColor.green
         self.addSubview(scrollView)
         
         NSLayoutConstraint.activate([
@@ -55,6 +56,7 @@ class WDBulletListView: UIView {
     
     func createContainerView() {
         containerView.translatesAutoresizingMaskIntoConstraints = false
+//        containerView.backgroundColor = UIColor.red
         scrollView.addSubview(containerView)
         
         NSLayoutConstraint.activate([
@@ -183,7 +185,6 @@ class WDBulletListView: UIView {
         let distance =  Double((nextDot.center.y - dot.center.y))
         let animSpeed:Double = 1000
         let animDuration:Double = distance/(animSpeed)
-        print("Animation duration - \(animDuration)")
         line.bottomAnchor.constraint(equalTo: nextDot.centerYAnchor).isActive = true
         UIView.animate(withDuration: animDuration, animations: {
             self.layoutIfNeeded()

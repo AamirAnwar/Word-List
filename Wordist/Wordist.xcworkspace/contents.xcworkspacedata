@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/Hazmat/Documents/iOSProjects/Word-List/Wordist/Wordist/Models/WDAnimationFactory.swift">
+   </FileRef>
+   <FileRef
       location = "group:Wordist.xcodeproj">
    </FileRef>
    <FileRef

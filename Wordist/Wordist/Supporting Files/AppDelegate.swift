@@ -14,16 +14,22 @@ import Crashlytics
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var dropdown:WDNotificationDropdownView?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        setLaunchCount()
         Fabric.with([Crashlytics.self])
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = getRootViewController()
         window?.backgroundColor = UIColor.white
         window?.makeKeyAndVisible()
         return true
+    }
+    
+    func setLaunchCount() {
+        let launchCount = UserDefaults.standard.integer(forKey: kIsFirstLaunchKey)
+        UserDefaults.standard.set(launchCount + 1, forKey: kIsFirstLaunchKey)
     }
     
     func getRootViewController() -> UIViewController {
