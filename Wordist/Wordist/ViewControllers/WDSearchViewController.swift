@@ -111,6 +111,9 @@ class WDSearchViewController: UIViewController {
     }
     
     func transitionToDefaultState() {
+        if didShowHoverFirstRun {
+            hideFirstRun()
+        }
         if searchTextField.text?.isEmpty == true {
             self.searchTableView.alpha = 0.0
             let searchFieldOriginY = (self.view.frame.size.height - kTextFieldHeight)/2 - 20
@@ -126,6 +129,8 @@ class WDSearchViewController: UIViewController {
                 bottomPadding += tabBarHeight
             }
             UIView.animate(withDuration: 0.15, animations: {
+                self.searchTextField.frame = CGRect(x: self.searchTextField.frame.origin.x, y: kStatusBarHeight + kDefaultPadding, width: (self.view.frame.size.width - 2*kSidePadding) - 2*kDefaultPadding - kDottedLoaderWidth, height: self.searchTextField.frame.height)
+                self.dottedLoader.frame = CGRect(x: self.searchTextField.frame.origin.x + self.searchTextField.frame.width + kDefaultPadding, y: self.searchTextField.frame.origin.y + self.searchTextField.frame.height/2 - kDottedLoaderHeight/2, width: kDottedLoaderWidth, height: kDottedLoaderHeight)
                 self.searchTableView.frame = CGRect(x: 0, y: tableY, width: self.view.frame.width , height: self.view.frame.height - tableY - bottomPadding)
                 
             })
@@ -246,6 +251,7 @@ extension WDSearchViewController:CAAnimationDelegate {
 }
 
 extension WDSearchViewController:UITextFieldDelegate {
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
@@ -257,6 +263,9 @@ extension WDSearchViewController:UITextFieldDelegate {
         if updatedText.count > 1 {
             wordSearchObject.performSearch(withQuery: updatedText, delegate: self)
             showDottedLoader()
+            if  (searchTextField.frame.origin.y != kStatusBarHeight + kDefaultPadding) {
+                transitionToDefaultState()
+            }
         }
         else {
             clearResults()
@@ -301,6 +310,7 @@ extension WDSearchViewController:WordSearchDelegate {
     func didPerformSearchSuccessfully(forQuery query: String) {
         searchTableView.reloadData()
         hideDottedLoader()
+        
     }
     
     func didFailToSearch(query: String) {
