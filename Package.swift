@@ -4,7 +4,7 @@ import PackageDescription
 let package = Package(
     name: "Eigen",
     dependencies: [
-      .package(url: "https://github.com/danger/swift.git", from: "0.8.0")
+      .package(url: "https://github.com/danger/swift.git", from: "1.0.0")
     ],
     targets: [
         // This is just an arbitrary Swift file in our app, that has
