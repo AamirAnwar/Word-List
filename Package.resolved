@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "DangerXCodeSummary",
+        "repositoryURL": "https://github.com/f-meloni/danger-swift-xcodesummary",
+        "state": {
+          "branch": null,
+          "revision": "8e942ebb61098b83e55c1f2f27deb10b4d23c85a",
+          "version": "0.1.0"
+        }
+      },
+      {
         "package": "Files",
         "repositoryURL": "https://github.com/JohnSundell/Files.git",
         "state": {
