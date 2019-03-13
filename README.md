@@ -1,5 +1,5 @@
 
-# Wordiste
+# Wordiste [![Build Status](https://travis-ci.com/AamirAnwar/Wordiste.svg?branch=master)](https://travis-ci.com/AamirAnwar/Wordiste)
 
 ![Logo](https://github.com/AamirAnwar/Wordiste/raw/master/Github_Art.png)
 
