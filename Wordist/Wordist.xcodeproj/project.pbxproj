@@ -16,6 +16,7 @@
 		4367E4A61F62EF6F00D4176C /* WDFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4367E4A51F62EF6F00D4176C /* WDFonts.swift */; };
 		4367E4A81F62F02E00D4176C /* WDColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4367E4A71F62F02E00D4176C /* WDColors.swift */; };
 		43681C1E1F66F08B00BC91D6 /* WDEmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43681C1D1F66F08B00BC91D6 /* WDEmptyStateView.swift */; };
+		4376B6A3223993CF005AF802 /* DangerSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4376B6A2223993CF005AF802 /* DangerSupport.swift */; };
 		4389BA7A1F65AA5D00E3EFC2 /* WDHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4389BA791F65AA5D00E3EFC2 /* WDHelpers.swift */; };
 		4389BA7C1F65ADB600E3EFC2 /* WDRoundRectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4389BA7B1F65ADB600E3EFC2 /* WDRoundRectButton.swift */; };
 		4389BA7E1F65B4EB00E3EFC2 /* WDBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4389BA7D1F65B4EB00E3EFC2 /* WDBaseViewController.swift */; };
@@ -60,6 +61,7 @@
 		4367E4A51F62EF6F00D4176C /* WDFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDFonts.swift; sourceTree = "<group>"; };
 		4367E4A71F62F02E00D4176C /* WDColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDColors.swift; sourceTree = "<group>"; };
 		43681C1D1F66F08B00BC91D6 /* WDEmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDEmptyStateView.swift; sourceTree = "<group>"; };
+		4376B6A2223993CF005AF802 /* DangerSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DangerSupport.swift; sourceTree = "<group>"; };
 		4389BA791F65AA5D00E3EFC2 /* WDHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDHelpers.swift; sourceTree = "<group>"; };
 		4389BA7B1F65ADB600E3EFC2 /* WDRoundRectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDRoundRectButton.swift; sourceTree = "<group>"; };
 		4389BA7D1F65B4EB00E3EFC2 /* WDBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDBaseViewController.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				4367E4A71F62F02E00D4176C /* WDColors.swift */,
 				4367E4A31F62ECAF00D4176C /* Constants.swift */,
 				4389BA791F65AA5D00E3EFC2 /* WDHelpers.swift */,
+				4376B6A2223993CF005AF802 /* DangerSupport.swift */,
 			);
 			path = Commons;
 			sourceTree = "<group>";
@@ -437,6 +440,7 @@
 				43B1D6AD1F61B8B10094C96B /* AppDelegate.swift in Sources */,
 				43BB41601F643297006B3AA3 /* WDAPIManager.swift in Sources */,
 				4367E4A41F62ECAF00D4176C /* Constants.swift in Sources */,
+				4376B6A3223993CF005AF802 /* DangerSupport.swift in Sources */,
 				43BA5B321F67C31300F03F66 /* WDWebViewController.swift in Sources */,
 				435AD4FC1F630453001CD10C /* WDSearchResultTableViewCell.swift in Sources */,
 				43BDC2171F6557BD007C01E9 /* WDNavigationHeader.swift in Sources */,
