@@ -3,9 +3,24 @@ osx_image: xcode10.1
 xcode_workspace: Wordist/Wordist.xcworkspace
 xcode_scheme: Wordist
 xcode_destination: platform=iOS Simulator,OS=12.1,name=iPhone X
+
+
 cache:
-- bundler
-before_install:
-- bundle update
+directories:
+# General SwiftPM
+# Danger Swift plugins, like Yams
+- .build
+- ~/.danger-swift
+
+
+install:
+# Grab the latest Danger JS from npm
+- npm install -g danger
+# Compile the Danger runtime
+- swift build
+
+
 script:
-- bundle exec danger
+# Run the Dangerfile.swift
+- swift run danger-swift ci
+# Test my app...
