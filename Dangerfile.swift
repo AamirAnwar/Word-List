@@ -18,5 +18,5 @@ warn("Something pretty bad, but not important enough to fail the build")
 
 markdown("Free-form markdown that goes under the table, so you can do whatever.")
 
-let summary = XCodeSummary(filePath: "Wordist/build/reports/errors.json")
+let summary = XCodeSummary(filePath: "build/reports/errors.json")
 summary.report()
