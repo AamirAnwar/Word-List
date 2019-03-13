@@ -5,13 +5,6 @@ xcode_scheme: Wordist
 xcode_destination: platform=iOS Simulator,OS=12.1,name=iPhone X
 
 
-cache:
-directories:
-# General SwiftPM
-# Danger Swift plugins, like Yams
-- .build
-- ~/.danger-swift
-
 
 install:
 # Grab the latest Danger JS from npm
