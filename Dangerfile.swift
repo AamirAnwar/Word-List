@@ -1,14 +1,18 @@
-# Sometimes it's a README fix, or something like that - which isn't relevant for
-# including in a project's CHANGELOG for example
-declared_trivial = github.pr_title.include? "#trivial"
+import Danger
 
-# Make it more obvious that a PR is a work in progress and shouldn't be merged yet
-warn("PR is classed as Work in Progress") if github.pr_title.include? "[WIP]"
+let danger = Danger()
+let allSourceFiles = danger.git.modifiedFiles + danger.git.createdFiles
 
-# Warn when there is a big PR
-warn("Big PR") if git.lines_of_code > 500
+let changelogChanged = allSourceFiles.contains("CHANGELOG.md")
+let sourceChanges = allSourceFiles.first(where: { $0.hasPrefix("Sources") })
 
-# Don't let testing shortcuts get into master by accident
-fail("fdescribe left in tests") if `grep -r fdescribe specs/ `.length > 1
-fail("fit left in tests") if `grep -r fit specs/ `.length > 1
+if !changelogChanged && sourceChanges != nil {
+  warn("No CHANGELOG entry added.")
+}
 
+// You can use these functions to send feedback:
+message("Highlight something in the table")
+warn("Something pretty bad, but not important enough to fail the build")
+fail("Something that must be changed")
+
+markdown("Free-form markdown that goes under the table, so you can do whatever.")
