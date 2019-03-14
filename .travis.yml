@@ -3,6 +3,9 @@ osx_image: xcode10.1
 xcode_workspace: Wordist/Wordist.xcworkspace
 xcode_scheme: Wordist
 xcode_destination: platform=iOS Simulator,OS=12.1,name=iPhone X
+before_install:
+  - chmod +x setup.sh
+  - ./setup.sh
 
 
 
@@ -16,4 +19,3 @@ install:
 script:
 # Run the Dangerfile.swift
 - swift run danger-swift ci
-# Test my app...
