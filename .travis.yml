@@ -4,6 +4,7 @@ xcode_workspace: Wordist/Wordist.xcworkspace
 xcode_scheme: Wordist
 xcode_destination: platform=iOS Simulator,OS=12.1,name=iPhone X
 before_install:
+  - chmod +x setup.sh
   - ./setup.sh
 
 
