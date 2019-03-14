@@ -5,4 +5,4 @@ git checkout master
 git pull origin master
 cd ../Wordiste
 echo 'token here'
-echo GITHUB_TOKEN
+echo $GITHUB_TOKEN
